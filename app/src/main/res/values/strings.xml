@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Algae Estimator</string>
+
+    <!-- Action Bar -->
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_about_pushed">Algae Estimator :: About</string>
+
+    <string name="section_format">Hello World from fragment: %1$d</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    
+    <!-- Preferences -->
+    <string name="pref_use_imperial">Imperial Units</string>
+    <string name="pref_imperial_key">pref_imperial</string>
+    <string name="pref_imperial_sum">Switch to imperial units.</string>
+
+    <!-- Calculator Labels -->
+    <string name="calc_po4">PO4 Concentration</string>
+    <string name="calc_surf_temp">Temp Surface</string>
+    <string name="calc_bottom_temp">Temp Bottom</string>
+    <string name="calc_lake_depth">Lake Depth</string>
+    <string name="calc_chl_a">Chl a Value</string>
+    <string name="title_activity_chla">ChlaActivity</string>
+</resources>
