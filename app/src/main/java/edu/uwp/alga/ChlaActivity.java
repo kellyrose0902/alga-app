@@ -26,7 +26,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import edu.uwp.alga.utils.ChlaSectionsPagerAdapter;
-import edu.uwp.alga.utils.SectionsPagerAdapter;
 
 public class ChlaActivity extends AppCompatActivity {
 
@@ -71,8 +70,15 @@ public class ChlaActivity extends AppCompatActivity {
      */
     private void setToolbar() {
         final Toolbar mToolbar = (Toolbar) findViewById(R.id.chla_toolbar);
+        mToolbar.setTitle("Set Chla Values");
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        if (getSupportActionBar() != null) {
+            // method invoked only when the actionBar is not null.
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
     }
 
     private void setTabLayout() {
