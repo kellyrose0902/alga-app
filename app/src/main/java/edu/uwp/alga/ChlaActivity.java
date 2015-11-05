@@ -70,7 +70,7 @@ public class ChlaActivity extends AppCompatActivity {
      */
     private void setToolbar() {
         final Toolbar mToolbar = (Toolbar) findViewById(R.id.chla_toolbar);
-        mToolbar.setTitle("Set Chla Values");
+        mToolbar.setTitle("Set Chl a Values");
         setSupportActionBar(mToolbar);
 
 
