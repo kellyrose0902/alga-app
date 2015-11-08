@@ -10,7 +10,7 @@ Part of an ongoing [UW-Parkside Software Engineering I](http://green.uwp.edu/dep
 This app requires Java 8 or later; we recommend using the latest available version of Java as a matter of principle.
 
 `
-$ git clone https://github.com/ciscoo/alga-app.git
+$ git clone https://github.com/kellyrose0902/alga-app.git
 `
 ## Gradle Plugins
 
