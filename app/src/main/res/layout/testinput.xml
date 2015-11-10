@@ -16,8 +16,10 @@
  limitations under the License.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WBackground">
     <!-- TODO: Extract hard coded String to String values -->
@@ -26,119 +28,202 @@
         android:layout_height="wrap_content"
         android:src="@drawable/background"
         android:scaleType="fitXY"
-
         />
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
+        <android.support.v7.widget.GridLayout
 
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            app:columnCount="3"
+            app:rowCount="5"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="40dp"
+            >
             <edu.uwp.alga.MyTextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:textSize="@dimen/text_medium"
+                android:layout_height="0dp"
+                app:layout_columnWeight="4"
+                app:layout_rowWeight="1"
                 android:textColor="@color/WText"
-                android:padding="8dp"
-                android:text="Total Chl a"
-                android:id="@+id/total_chla" />
+                android:textSize="@dimen/text_medium"
+                android:text="@string/calc_po4"
+                android:id="@+id/po4_concentration" />
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="mg/mL"
-                android:id="@+id/editText_direct_chla"
+                android:hint="mg/L"
+                android:padding="8dp"
                 android:background="@color/WText"
                 android:gravity="center"
                 android:ems="10"
-                android:padding="8dp"
-                android:layout_weight="2" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
+                android:id="@+id/editText"
+                app:layout_columnWeight="3" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_centerInParent="true">
-
-            <edu.uwp.alga.MyTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="Cyano Chl a"
-                android:id="@+id/cyanob_chl" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:background="@color/WText"
-                android:padding="8dp"
-                android:gravity="center"
-                android:ems="10"
-                android:hint="mg/mL"
-                android:id="@+id/editText_cyanob_chl"
-                android:layout_weight="2" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
             <ImageButton
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:scaleType="centerInside"
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@color/transparent"
+                android:src="@drawable/question"
+                android:scaleType="centerInside"
+                app:layout_columnWeight="1"/>
+
+
+            <edu.uwp.alga.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_columnWeight="4"
+                app:layout_rowWeight="1"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium"
+                android:text="@string/calc_surf_temp"
+                android:id="@+id/temp_surface" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_columnWeight="3"
+                android:inputType="number"
+                android:hint="°C"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/temp_surface_edit"
+                />
+            <ImageButton
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/question"
+                android:scaleType="centerInside"
+                app:layout_columnWeight="1"
+                />
+
+            <edu.uwp.alga.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_columnWeight="4"
+                app:layout_rowWeight="1"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium"
+                android:text="@string/calc_bottom_temp"
+                android:id="@+id/bottom_surface" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_columnWeight="3"
+                android:inputType="number"
+                android:hint="°C"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/temp_bottom_edit"
+                />
+
+            <ImageButton
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_columnWeight="1"
+                android:background="@color/transparent"
+                android:src="@drawable/question"
+                android:scaleType="centerInside"
+                />
+            <edu.uwp.alga.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_columnWeight="4"
+                app:layout_rowWeight="1"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/WText"
+
+                android:text="@string/calc_lake_depth"
+                android:id="@+id/lake_depth" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_columnWeight="3"
+                android:inputType="number"
+                android:hint="m"
+                android:padding="7dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/lake_depth_edit"/>
+            <ImageButton
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/question"
+                android:scaleType="centerInside"
+                app:layout_columnWeight="1"/>
+            <edu.uwp.alga.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_columnWeight="4"
+                android:textSize="@dimen/text_medium"
+                app:layout_rowWeight="1"
+                android:textColor="@color/WText"
+                android:text="@string/calc_chl_a"
+                android:id="@+id/chl_a" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_columnWeight="3"
+                android:text="Set"
+                android:textColor="@color/WText"
+                android:background="#8a8a8a"
+                android:textStyle="bold"
+                android:id="@+id/buttonChla"
+                android:onClick="calculateChla"/>
+
+            <ImageButton
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/transparent"
+                android:src="@drawable/question"
+                android:scaleType="centerInside"
+                app:layout_columnWeight="1"
+                />
+
+
+
+        </android.support.v7.widget.GridLayout>
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+
+                android:background="@drawable/submit_state"
                 android:src="@drawable/submit_button"
                 android:id="@+id/button"
-
-                android:layout_alignParentTop="true"
+                android:onClick="SubmitData"
+                android:soundEffectsEnabled="true"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
-
     </LinearLayout>
+
 
 
 </FrameLayout>

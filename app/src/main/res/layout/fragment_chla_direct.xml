@@ -125,13 +125,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp">
-            <ImageButton
+            <Button
                 android:layout_width="150dp"
                 android:layout_height="60dp"
-                android:scaleType="centerInside"
-                android:background="@color/transparent"
+
+                android:background="@drawable/submit_state"
                 android:src="@drawable/submit_button"
-                android:id="@+id/button"
+                android:id="@+id/submit_direct"
 
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"

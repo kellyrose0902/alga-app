@@ -120,4 +120,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChlaActivity.class);
         startActivity(intent);
     }
+    public void SubmitData(View view){
+        view.playSoundEffect(android.view.SoundEffectConstants.CLICK);
+    }
 }
