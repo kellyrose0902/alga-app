@@ -13,7 +13,7 @@ package edu.uwp.alga;
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License..
  */
 
 import android.content.Intent;
@@ -119,5 +119,8 @@ public class MainActivity extends AppCompatActivity {
     public void calculateChla(View view) {
         Intent intent = new Intent(this, ChlaActivity.class);
         startActivity(intent);
+    }
+    public void SubmitData(View view){
+        view.playSoundEffect(android.view.SoundEffectConstants.CLICK);
     }
 }
