@@ -245,10 +245,9 @@
             <Button
                 android:layout_width="170dp"
                 android:layout_height="70dp"
-
                 android:background="@drawable/submit_state"
                 android:src="@drawable/submit_button"
-                android:id="@+id/button"
+                android:id="@+id/buttonSubmit"
                 android:onClick="SubmitData"
                 android:soundEffectsEnabled="true"
                 android:layout_alignParentBottom="true"

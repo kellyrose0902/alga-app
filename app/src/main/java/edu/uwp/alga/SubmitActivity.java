@@ -57,7 +57,6 @@ public class SubmitActivity extends AppCompatActivity {
         mToolbar.setTitle("Calculations");
         setSupportActionBar(mToolbar);
 
-
         if (getSupportActionBar() != null) {
             // method invoked only when the actionBar is not null.
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
