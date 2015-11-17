@@ -54,13 +54,13 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="m"
                 android:background="@color/WText"
                 android:gravity="center"
                 android:ems="10"
                 android:padding="8dp"
-                android:id="@+id/editText_secci"
+                android:id="@+id/Secchi_input"
                 android:layout_weight="2" />
             <LinearLayout
                 android:layout_width="0dp"
@@ -98,13 +98,13 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:background="@color/WText"
                 android:hint="%"
                 android:padding="8dp"
                 android:gravity="center"
                 android:ems="10"
-                android:id="@+id/editText_oxygen"
+                android:id="@+id/Oxygen_input"
                 android:layout_weight="2" />
             <LinearLayout
                 android:layout_width="0dp"

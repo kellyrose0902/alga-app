@@ -88,4 +88,6 @@ public class ChlaActivity extends AppCompatActivity {
         // Make it swipeable, otherwise they will be squished together.
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
+
+
 }

@@ -30,8 +30,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import edu.uwp.alga.utils.SectionsPagerAdapter;
 import edu.uwp.alga.settings.PreferencesActivity;
+import edu.uwp.alga.utils.SectionsPagerAdapter;
 import edu.uwp.alga.utils.SnackbarFactory;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    private int REQUEST_CODE = 101;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
        // setToolbar();
         setFragmentPagers();
         setTabLayout();
+
     }
 
     private void setFragmentPagers() {
@@ -117,17 +118,13 @@ public class MainActivity extends AppCompatActivity {
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
-    public void calculateChla(View view) {
-        startActivity(new Intent(this, ChlaActivity.class));
-    }
+
+
 
     public void calculatePo(View view) {
         Log.d("CALC", "Calculate Phosp");
     }
 
-    public void SubmitData(View view){
-        // TODO: Post data to server.
-        // TODO: Bundle data to send to activity.
-        startActivity(new Intent(this, SubmitActivity.class));
-    }
+
+
 }

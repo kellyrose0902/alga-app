@@ -25,7 +25,7 @@ public class SubmitSectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return DataViewFragment.create(position++);
             case 1:
-                return GraphViewFragment.create(position++);
+                return (GraphViewFragment)GraphViewFragment.create(position++);
             default:
                 return PlaceholderFragment.newInstance(position++);
         }

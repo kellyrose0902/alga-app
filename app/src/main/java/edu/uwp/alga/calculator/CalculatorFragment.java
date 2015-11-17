@@ -16,13 +16,19 @@ package edu.uwp.alga.calculator;
  * limitations under the License.
  */
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.R;
+import edu.uwp.alga.SubmitActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +38,14 @@ import edu.uwp.alga.R;
  * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CalculatorFragment extends Fragment {
-
+public class CalculatorFragment extends Fragment implements View.OnClickListener {
+    public View rootView;
+    Button setChlbutton;
+    Button submitData;
+    EditText POtext;
+    EditText TempSurtext;
+    EditText TempBottext;
+    EditText Depthtext;
     /**
      * The fragment argument representing the section number for this
      * fragment. Static because it's shared across all instances of
@@ -63,6 +75,32 @@ public class CalculatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+        rootView = inflater.inflate(R.layout.fragment_calculator, container, false);
+
+        setChlbutton = (Button)rootView.findViewById(R.id.buttonChla);
+        setChlbutton.setOnClickListener(this);
+        submitData = (Button)rootView.findViewById(R.id.SubmitAll);
+        submitData.setOnClickListener(this);
+        POtext = (EditText)rootView.findViewById(R.id.po_edit);
+        TempSurtext = (EditText)rootView.findViewById(R.id.temp_surface_edit);
+        TempBottext = (EditText) rootView.findViewById(R.id.temp_bottom_edit);
+        Depthtext = (EditText) rootView.findViewById(R.id.lake_depth_edit);
+        return rootView;
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonChla:
+                Intent intentChl = new Intent(getActivity(), ChlaActivity.class);
+                startActivity(intentChl);
+                break;
+            case R.id.SubmitAll:
+                Intent intentData = new Intent(getActivity(), SubmitActivity.class);
+                startActivity(intentData);
+
+        }
     }
 }

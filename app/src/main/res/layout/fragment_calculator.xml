@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ Copyright 2015 UW-Parkside, Harleen Kaur, Hanh Le, Francisco Mateo
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WBackground">
-
+    <!-- TODO: Extract hard coded String to String values -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/background"
         android:scaleType="fitXY"
-
 
         />
     <LinearLayout
@@ -23,7 +38,7 @@
 
         android:paddingTop="@dimen/activity_vertical_margin"
 
-        tools:context="edu.uwp.alga.calculator.CalculatorFragment">
+        >
 
         <LinearLayout
             android:layout_marginTop="20dp"
@@ -41,17 +56,28 @@
                 android:text="@string/calc_po4"
                 android:id="@+id/po4_concentration" />
 
-            <Button
+            <!--<Button-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="2"-->
+            <!--android:text="Set"-->
+            <!--android:textColor="@color/WText"-->
+            <!--android:background="#8a8a8a"-->
+            <!--android:textStyle="bold"-->
+            <!--android:id="@+id/buttonPo"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:onClick="calculatePo"/>-->
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Set"
-                android:textColor="@color/WText"
-                android:background="#8a8a8a"
-                android:textStyle="bold"
-                android:id="@+id/buttonPo"
-                android:layout_gravity="center_horizontal"
-                android:onClick="calculatePo"/>
+                android:inputType="numberDecimal"
+                android:hint="mg/L"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/po_edit"
+                android:layout_weight="2" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -86,7 +112,7 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="°C"
                 android:padding="8dp"
                 android:background="@color/WText"
@@ -128,7 +154,7 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="°C"
                 android:padding="8dp"
                 android:background="@color/WText"
@@ -171,7 +197,7 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="m"
                 android:padding="7dp"
                 android:background="@color/WText"
@@ -215,12 +241,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="Set"
+
                 android:textColor="@color/WText"
-                android:background="#8a8a8a"
+                android:background="@color/WGray"
                 android:textStyle="bold"
                 android:id="@+id/buttonChla"
                 android:layout_gravity="center_horizontal"
-                android:onClick="calculateChla"/>
+                />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -247,12 +274,14 @@
                 android:layout_height="70dp"
                 android:background="@drawable/submit_state"
                 android:src="@drawable/submit_button"
-                android:id="@+id/buttonSubmit"
-                android:onClick="SubmitData"
+                android:id="@+id/SubmitAll"
+
                 android:soundEffectsEnabled="true"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
+
+
 </FrameLayout>

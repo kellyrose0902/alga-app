@@ -7,4 +7,6 @@
     <color name="WBackground">#23173A</color>
     <color name="WText">#FFFFFF</color>
     <color name="transparent">#00ffffff</color>
+    <color name="WGray">#8a8a8a</color>
+
 </resources>

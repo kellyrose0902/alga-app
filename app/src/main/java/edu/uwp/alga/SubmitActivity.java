@@ -54,7 +54,7 @@ public class SubmitActivity extends AppCompatActivity {
      */
     private void setToolbar() {
         final Toolbar mToolbar = (Toolbar) findViewById(R.id.submit_toolbar);
-        mToolbar.setTitle("Calculations");
+        mToolbar.setTitle("Result");
         setSupportActionBar(mToolbar);
 
         if (getSupportActionBar() != null) {
@@ -68,4 +68,6 @@ public class SubmitActivity extends AppCompatActivity {
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.submit_tabs);
         tabLayout.setupWithViewPager(mViewPager);
     }
+
+
 }

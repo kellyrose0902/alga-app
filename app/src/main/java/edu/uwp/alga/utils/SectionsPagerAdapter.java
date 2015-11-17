@@ -54,7 +54,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 4;
+        return 3;
     }
 
     /**
@@ -72,8 +72,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "Datalog";
             case 2:
                 return "Guide";
-            case 3:
-                return "Settings";
+
 
         }
         return null;

@@ -16,19 +16,34 @@ package edu.uwp.alga.calculator;
  * limitations under the License.
  */
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
+import edu.uwp.alga.utils.DataUtils;
 
-public class ChlaDirectFragment extends Fragment {
+public class ChlaDirectFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-
-    public ChlaDirectFragment() {}
+    Button directButton;
+    public View rootView;
+    EditText Totaltext;
+    EditText Cyanotext;
+    SharedPreferences DataInputLog;
+    SharedPreferences.Editor editor;
+    public ChlaDirectFragment() {
+    }
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -50,6 +65,68 @@ public class ChlaDirectFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chla_direct, container, false);
+        rootView = inflater.inflate(R.layout.fragment_chla_direct, container, false);
+        //Save data
+        Context context = getActivity();
+        DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
+                Context.MODE_PRIVATE);
+        editor = DataInputLog.edit();
+
+        Totaltext = (EditText)rootView.findViewById(R.id.direct_total);
+        Cyanotext = (EditText)rootView.findViewById(R.id.direct_cyano);
+        directButton = (Button)rootView.findViewById(R.id.submit_direct);
+        directButton.setOnClickListener(this);
+        initializeValue();
+        return rootView;
+    }
+
+    private void initializeValue() {
+        if(DataInputLog.contains(DataUtils.DirectTotal)){
+            Totaltext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, 0f)));
+        }
+
+        if(DataInputLog.contains(DataUtils.DirectCyano)){
+            Cyanotext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectCyano, 0f)));
+        }
+    }
+
+
+    public boolean checkInput(){
+        if(!(DataUtils.hasValue(Totaltext)||DataUtils.hasValue(Cyanotext))){
+            Toast.makeText(getActivity(),"Input at least 1 field",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    public void saveData(){
+        //editor.clear();
+        //editor.commit();
+        if (DataUtils.hasValue(Totaltext)){
+            editor.putFloat(DataUtils.DirectTotal,Float.valueOf(Totaltext.getText().toString()));
+        }
+        if (DataUtils.hasValue(Cyanotext)){
+            editor.putFloat(DataUtils.DirectCyano,Float.valueOf(Cyanotext.getText().toString()));
+        }
+        editor.apply();
+        Log.e("Preference","Total Chla: "+String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, -1.0f)));
+        Log.e("Preference","Cyano Chla: "+String.valueOf(DataInputLog.getFloat(DataUtils.DirectCyano, -1.0f)));
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.submit_direct:
+                if(checkInput()){
+                    saveData();
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
+
+
+                break;
+        }
     }
 }
