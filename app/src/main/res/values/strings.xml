@@ -21,5 +21,8 @@
     <string name="calc_bottom_temp">Temp Bottom</string>
     <string name="calc_lake_depth">Lake Depth</string>
     <string name="calc_chl_a">Chl a Value</string>
+
+    <!-- Activity Titles -->
     <string name="title_activity_chla">ChlaActivity</string>
+    <string name="title_activity_submit">SubmitActivity</string>
 </resources>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.uwp.alga" >
-    <uses-sdk android:minSdkVersion="21"
-
-         />
+    <uses-sdk android:minSdkVersion="21"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,20 +19,23 @@
         <activity
             android:name=".settings.PreferencesActivity"
             android:parentActivityName=".MainActivity" >
-
         </activity>
         <activity
             android:name=".ChlaActivity"
             android:label="@string/title_activity_chla"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
-
         </activity>
-        <activity android:name=".Splash"
+        <activity
+            android:name=".SubmitActivity"
+            android:label="@string/title_activity_submit"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,4 +1,4 @@
-package edu.uwp.alga;
+package edu.uwp.alga.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -8,18 +8,18 @@ import android.widget.TextView;
 /**
  * Created by Kelly on 11/4/2015.
  */
-public class MyTextView extends TextView {
-    public MyTextView(Context context) {
+public class LabelTextView extends TextView {
+    public LabelTextView(Context context) {
         super(context);
         init();
     }
 
-    public MyTextView(Context context, AttributeSet attrs) {
+    public LabelTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public MyTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LabelTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

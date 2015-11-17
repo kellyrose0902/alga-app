@@ -25,6 +25,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -117,10 +118,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateChla(View view) {
-        Intent intent = new Intent(this, ChlaActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, ChlaActivity.class));
     }
+
+    public void calculatePo(View view) {
+        Log.d("CALC", "Calculate Phosp");
+    }
+
     public void SubmitData(View view){
-        view.playSoundEffect(android.view.SoundEffectConstants.CLICK);
+        // TODO: Post data to server.
+        // TODO: Bundle data to send to activity.
+        startActivity(new Intent(this, SubmitActivity.class));
     }
 }
