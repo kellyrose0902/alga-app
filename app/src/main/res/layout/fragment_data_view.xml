@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/WBackground">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="edu.uwp.alga.utils.DataViewFragment">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium"
+                android:text="@string/submit_temp_diff"
+                android:id="@+id/po4_concentration" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="°C"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium"
+                android:text="@string/submit_pav"
+                android:id="@+id/temp_surface" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="°C"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/temp_surface_edit"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium"
+                android:text="@string/calc_bottom_temp"
+                android:id="@+id/bottom_surface" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="°C"
+                android:padding="8dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/temp_bottom_edit"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/WText"
+
+                android:text="@string/calc_lake_depth"
+                android:id="@+id/lake_depth" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="m"
+                android:padding="7dp"
+                android:background="@color/WText"
+                android:gravity="center"
+                android:ems="10"
+                android:id="@+id/lake_depth_edit"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>

@@ -43,7 +43,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingTop="40dp"
             >
-            <edu.uwp.alga.MyTextView
+            <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_columnWeight="4"
@@ -75,7 +75,7 @@
                 app:layout_columnWeight="1"/>
 
 
-            <edu.uwp.alga.MyTextView
+            <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_columnWeight="4"
@@ -107,7 +107,7 @@
                 app:layout_columnWeight="1"
                 />
 
-            <edu.uwp.alga.MyTextView
+            <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_columnWeight="4"
@@ -139,7 +139,7 @@
                 android:src="@drawable/question"
                 android:scaleType="centerInside"
                 />
-            <edu.uwp.alga.MyTextView
+            <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_columnWeight="4"
@@ -169,7 +169,7 @@
                 android:src="@drawable/question"
                 android:scaleType="centerInside"
                 app:layout_columnWeight="1"/>
-            <edu.uwp.alga.MyTextView
+            <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_columnWeight="4"
