@@ -26,6 +26,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:gridlayout-v7:23.1.0+'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
 }
 
 buildscript {
@@ -35,11 +36,15 @@ buildscript {
 
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+
     }
 }
 
 repositories {
     mavenCentral()
+
+    maven { url "https://jitpack.io" }
+
 }
 
 android {

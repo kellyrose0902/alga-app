@@ -1,4 +1,4 @@
-package edu.uwp.alga.utils;
+package edu.uwp.alga.results;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
