@@ -34,4 +34,8 @@
     <!-- Activity Titles -->
     <string name="title_activity_chla">ChlaActivity</string>
     <string name="title_activity_submit">SubmitActivity</string>
+
+    <!--symbol-->
+    <string name="tick">\u2713</string>
+    <string name="tick2">\u2714</string>
 </resources>

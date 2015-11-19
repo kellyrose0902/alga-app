@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setFragmentPagers();
         setTabLayout();
 
+
     }
 
     private void setFragmentPagers() {

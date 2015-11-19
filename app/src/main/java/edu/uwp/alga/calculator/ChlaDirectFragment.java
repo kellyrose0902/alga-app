@@ -96,8 +96,24 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
             Toast.makeText(getActivity(),"Input at least 1 field",Toast.LENGTH_SHORT).show();
             return false;
         }
+        if(DataUtils.hasValue(Totaltext)){
+            Float value = Float.valueOf(Totaltext.getText().toString());
+            if (value < 0 || value > 300){
+                Toast.makeText(getActivity(),"Please input Total Chl a value between 0 and 300",Toast.LENGTH_SHORT);
+                return false;
+            }
+        }
+        if(DataUtils.hasValue(Cyanotext)) {
+            Float value = Float.valueOf(Cyanotext.getText().toString());
+            if (value < 0 || value > 300) {
+                Toast.makeText(getActivity(), "Please input Cyano Chl a value between 0 and 300", Toast.LENGTH_SHORT);
+                return false;
+            }
+        }
         return true;
     }
+
+
 
     public void saveData(){
         //editor.clear();
@@ -105,11 +121,13 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         if (DataUtils.hasValue(Totaltext)){
             editor.putFloat(DataUtils.DirectTotal,Float.valueOf(Totaltext.getText().toString()));
         }
+        else editor.remove(DataUtils.DirectTotal);
         if (DataUtils.hasValue(Cyanotext)){
             editor.putFloat(DataUtils.DirectCyano,Float.valueOf(Cyanotext.getText().toString()));
         }
+        else editor.remove(DataUtils.DirectCyano);
         editor.apply();
-        Log.e("Preference","Total Chla: "+String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, -1.0f)));
+        Log.e("Preference", "Total Chla: " + String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, -1.0f)));
         Log.e("Preference","Cyano Chla: "+String.valueOf(DataInputLog.getFloat(DataUtils.DirectCyano, -1.0f)));
     }
 
@@ -120,13 +138,21 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
             case R.id.submit_direct:
                 if(checkInput()){
                     saveData();
-
+                    editor.putBoolean(DataUtils.isSetChla, true);
+                    editor.putBoolean(DataUtils.isDirect,true);
+                    editor.commit();
+                    deleteEstimateData();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
 
-
                 break;
         }
+    }
+
+    private void deleteEstimateData() {
+        editor.remove(DataUtils.EstimateSecchi);
+        editor.remove(DataUtils.EstimateOxygen);
+        editor.apply();
     }
 }

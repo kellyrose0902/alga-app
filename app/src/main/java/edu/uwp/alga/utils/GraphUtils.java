@@ -29,6 +29,7 @@ public class GraphUtils {
             LineDataSet1.setColor(Color.GREEN);
             LineDataSet1.setColor(Color.GREEN);
             LineDataSet1.setCircleColor(Color.GREEN);
+            LineDataSet1.setLineWidth(0f);
             //LineDataSet1.setLineWidth(0.6f);
             //LineDataSet1.setCubicIntensity(0.05f);
 
