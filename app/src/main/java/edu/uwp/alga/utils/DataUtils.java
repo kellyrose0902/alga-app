@@ -23,6 +23,7 @@ public class DataUtils {
     public static String EstimateSecchi = "EstimateSecchikey";
     public static String isSetChla = "isSetChlakey";
     public static String isDirect = "isDirectkey";
+    public static String lux = "Luxkey";
     public static boolean hasValue(EditText editText){
         String value = editText.getText().toString();
         return (value.length()!=0);

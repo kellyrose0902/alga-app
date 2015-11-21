@@ -97,7 +97,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         else {
             Float value = Float.valueOf(Sechitext.getText().toString());
             if (value <= 0 || value > 1) {
-                Toast.makeText(getActivity(), "Please input Secchi Depth value between 0 and 1", Toast.LENGTH_SHORT);
+                Toast.makeText(getActivity(), "Please input Secchi Depth value between 0 and 1", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -105,13 +105,15 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         if(DataUtils.hasValue(Oxygentext)) {
             Float value = Float.valueOf(Oxygentext.getText().toString());
             if (value < 1 || value > 100) {
-                Toast.makeText(getActivity(), "Please input Oxygen Dissolved value between 1 and 100", Toast.LENGTH_SHORT);
+                Toast.makeText(getActivity(), "Please input Oxygen Dissolved value between 1 and 100", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
             return true;
 
     }
+
+    //Save all the input data to the shared preference
     public void saveData(){
         if (DataUtils.hasValue(Sechitext)){
             editor.putFloat(DataUtils.EstimateSecchi, Float.valueOf(Sechitext.getText().toString()));

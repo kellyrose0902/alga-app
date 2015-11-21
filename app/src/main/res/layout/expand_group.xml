@@ -4,23 +4,27 @@
     android:layout_height="wrap_content"
     android:paddingTop="7dp"
     android:paddingBottom="7dp"
-    android:paddingRight="7dp"
+
     >
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/group_collapsed"
+        android:id="@+id/indicator" />
     <edu.uwp.alga.utils.LabelTextView
         android:layout_width="wrap_content"
         android:id="@+id/group_title"
-        android:paddingLeft="25dp"
+        android:paddingLeft="12dp"
         android:layout_height="wrap_content"
         android:textColor="@color/WText"
-        android:layout_marginLeft="10dp"
         android:textSize="@dimen/text_medium"
 
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toRightOf="@+id/indicator"
+        android:layout_toEndOf="@+id/indicator" />
     <edu.uwp.alga.utils.LabelTextView
         android:id="@+id/group_content"
-        android:layout_marginRight="20dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/WText"

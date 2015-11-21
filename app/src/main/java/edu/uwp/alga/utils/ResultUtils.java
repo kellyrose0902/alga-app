@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Kelly on 11/16/2015.
  */
-public class GraphUtils {
+public class ResultUtils {
 
     public static ArrayList<LineDataSet> getDataSet(ArrayList<Float> totalDataSet, ArrayList<Float>cyanoDataSet){
 
@@ -60,4 +60,6 @@ public class GraphUtils {
 
         return xAxis;
     }
+
+
 }

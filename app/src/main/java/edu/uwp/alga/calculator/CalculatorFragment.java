@@ -19,6 +19,8 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -103,11 +105,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         if(DataInputLog.getBoolean(DataUtils.isSetChla, false)){
             setChlbutton.setBackgroundResource(R.drawable.set_button_xml);
             setChlbutton.setText(context.getResources().getString(R.string.tick));
-            initializeValue();
-            //setChlbutton.setTextColor(Color.WHITE);
+
             Log.e("Fragment", "setbutton");
 
         }
+        initializeValue();
         return rootView;
     }
         private void initializeValue(){
@@ -125,6 +127,23 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             }
         }
 
+    public float getLux() {
+        float lux;
+
+        SensorManager sensorManager
+                = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        Sensor lightSensor
+                = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        if (lightSensor == null) {
+            lux = 12000f;
+            Log.e("Light", String.valueOf(lux));
+        } else {
+            lux = lightSensor.getMaximumRange();
+            Log.e("Light", String.valueOf(lux));
+        }
+        return lux;
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -137,6 +156,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             case R.id.SubmitAll:
 
                 if (checkInput()){
+                    Float lux = getLux();
+                    editor.putFloat(DataUtils.lux,getLux());
                     saveData();
                     Intent intentData = new Intent(getActivity(), SubmitActivity.class);
                     startActivity(intentData);
@@ -165,13 +186,20 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             }
 
             value = Float.valueOf(TempSurtext.getText().toString());
+            Float surtempVal = value;
             if (value<0 || value>40){
                 Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
                 return false;
             }
             value = Float.valueOf(TempBottext.getText().toString());
+            Float bottempVal = value;
             if (value<0 || value>40){
                 Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if(bottempVal>surtempVal){
+                Toast.makeText(getActivity(),"Bottom temperature cannot be greater that surface temperature",Toast.LENGTH_SHORT).show();
                 return false;
             }
 
@@ -189,6 +217,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     public void saveData(){
+
         if(DataUtils.hasValue(POtext))
         editor.putFloat(DataUtils.PO,Float.valueOf(POtext.getText().toString()));
 

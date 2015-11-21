@@ -22,13 +22,13 @@ public class AlgalDataCal {
 
     public float N0 = N0_MIN;
     // Parameters main
-    private float total_chla;
-    private float cyano_chla;
-    private float Pbot;
-    private float surtemp;
-    private float bottemp;
-    private float depth;
-    private float lux;
+    public float total_chla;
+    public float cyano_chla;
+    public float Pbot;
+    public float surtemp;
+    public float bottemp;
+    public float depth;
+    public float lux;
 
 
 
