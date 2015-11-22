@@ -1,5 +1,6 @@
 package edu.uwp.alga.utils;
 
+import android.content.SharedPreferences;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
@@ -42,4 +43,15 @@ public class DataUtils {
             return null;
         }
     }
+//simple test to check if the data is available
+
+    public boolean hasData(SharedPreferences preferences){
+        if(preferences.contains(PO) && preferences.contains(TempSurface) && preferences.contains(TempBottom)
+                && preferences.contains(lux) && preferences.contains(LakeDepth)){
+            return true;
+        }
+        return false;
+    }
+
+
 }

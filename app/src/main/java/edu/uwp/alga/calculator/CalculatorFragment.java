@@ -20,6 +20,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,7 +46,7 @@ import edu.uwp.alga.utils.DataUtils;
  * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CalculatorFragment extends Fragment implements View.OnClickListener {
+public class CalculatorFragment extends Fragment implements View.OnClickListener, SensorEventListener{
     public View rootView;
     Button setChlbutton;
     Button submitData;
@@ -52,6 +54,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     EditText TempSurtext;
     EditText TempBottext;
     EditText Depthtext;
+    Float lux;
+
+    SensorManager sensorManager;
+    Sensor lightSensor;
     /**
      * The fragment argument representing the section number for this
      * fragment. Static because it's shared across all instances of
@@ -86,14 +92,20 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         rootView = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         Context context = getActivity();
+        getLux();
+
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor = DataInputLog.edit();
 
+        initializeViewId(context);
+        initializeValue();
+        return rootView;
+    }
+
+    private void initializeViewId(Context context) {
         setChlbutton = (Button)rootView.findViewById(R.id.buttonChla);
         setChlbutton.setOnClickListener(this);
-
-
 
         submitData = (Button)rootView.findViewById(R.id.SubmitAll);
         submitData.setOnClickListener(this);
@@ -109,10 +121,9 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             Log.e("Fragment", "setbutton");
 
         }
-        initializeValue();
-        return rootView;
     }
-        private void initializeValue(){
+
+    private void initializeValue(){
             if(DataInputLog.contains(DataUtils.PO)){
                 POtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.PO,0f)));
             }
@@ -127,21 +138,20 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             }
         }
 
-    public float getLux() {
-        float lux;
-
-        SensorManager sensorManager
+    public void getLux() {
+        sensorManager
                 = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        Sensor lightSensor
+        lightSensor
                 = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
         if (lightSensor == null) {
             lux = 12000f;
             Log.e("Light", String.valueOf(lux));
         } else {
-            lux = lightSensor.getMaximumRange();
-            Log.e("Light", String.valueOf(lux));
+            lux = lightSensor.getMaximumRange(); // first calibration
+            sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_NORMAL);
         }
-        return lux;
+
 
     }
 
@@ -156,8 +166,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             case R.id.SubmitAll:
 
                 if (checkInput()){
-                    Float lux = getLux();
-                    editor.putFloat(DataUtils.lux,getLux());
+
+                    editor.putFloat(DataUtils.lux,lux);
                     saveData();
                     Intent intentData = new Intent(getActivity(), SubmitActivity.class);
                     startActivity(intentData);
@@ -231,5 +241,16 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         editor.putFloat(DataUtils.LakeDepth,Float.valueOf(Depthtext.getText().toString()));
 
         editor.apply();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+            lux = event.values[0];
+        }
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
