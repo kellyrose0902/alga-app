@@ -11,9 +11,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import edu.uwp.alga.NetworkManager.Installation;
+import edu.uwp.alga.NetworkManager.Networking;
 import edu.uwp.alga.utils.DataUtils;
 import edu.uwp.alga.utils.SubmitSectionsPagerAdapter;
 
@@ -35,19 +38,28 @@ public class SubmitActivity extends AppCompatActivity {
         setFragmentPagers();
         setTabLayout();
         setToolbar();
-
+        new Networking.UploadDataTask().execute(this);
         DataInputLog = getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor2 = DataInputLog.edit();
+        Installation.id(this);
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.resubmit, menu);
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
-
+            case R.id.modify:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
 
                 return true;
         }

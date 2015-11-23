@@ -126,6 +126,7 @@ public class GraphViewFragment extends Fragment {
 
         YAxis yAxis1 = chart.getAxisRight();
         LimitLine ll = new LimitLine(40f, "WHO Risk Limit for HAB: 40 µg");
+        ll.setLineWidth(3f);
         ll.setTextSize(10f);
         ll.setTextColor(Color.RED);
         yAxis.addLimitLine(ll);

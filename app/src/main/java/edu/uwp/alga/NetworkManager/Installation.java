@@ -1,6 +1,7 @@
-package NetworkManager;
+package edu.uwp.alga.NetworkManager;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,9 +23,11 @@ public class Installation {
             File installation = new File(context.getFilesDir(), INSTALLATION);
             try {
                 if (!installation.exists())
+                    Log.e("uuid","try");
                     writeInstallationFile(installation);
                 sID = readInstallationFile(installation);
             } catch (Exception e) {
+                Log.e("uuid","catch",e);
                 throw new RuntimeException(e);
             }
         }

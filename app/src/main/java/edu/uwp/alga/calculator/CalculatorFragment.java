@@ -24,6 +24,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.utils.Utils;
 
 import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.R;
@@ -67,6 +70,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
 
+    SharedPreferences SaveLog;
+    SharedPreferences stateData;
+    private int dataPtr;
+
     public CalculatorFragment() {}
 
     /**
@@ -94,6 +101,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         Context context = getActivity();
         getLux();
 
+        //Manage data resource to save log and current input
+        stateData = PreferenceManager.getDefaultSharedPreferences(context);
+        dataPtr = stateData.getInt(DataUtils.current, 0);
+        SaveLog = context.getSharedPreferences(DataUtils.DataLog+String.valueOf(dataPtr),Context.MODE_PRIVATE);
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor = DataInputLog.edit();
@@ -166,9 +177,14 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             case R.id.SubmitAll:
 
                 if (checkInput()){
-
-                    editor.putFloat(DataUtils.lux,lux);
+                    editor.putFloat(DataUtils.lux, lux);
+                    SaveLog.edit().clear().commit();
                     saveData();
+                    DataUtils.saveLog(DataInputLog,SaveLog);
+                    dataPtr = dataPtr + 1; // increment log pointer
+                    if(dataPtr == 10) dataPtr = 0; // reset log to store only 10 logs => change this to achieve more
+                    Log.e("Pointer",String.valueOf(dataPtr));
+                    stateData.edit().putInt(DataUtils.current,dataPtr).apply();
                     Intent intentData = new Intent(getActivity(), SubmitActivity.class);
                     startActivity(intentData);
                 }

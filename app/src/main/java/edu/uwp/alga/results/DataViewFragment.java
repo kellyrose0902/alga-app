@@ -80,7 +80,8 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         if (listDataHeader.size()==1){
             ChlaList.expandGroup(0);
         }
-        ChlaList.setOnGroupClickListener(groupClickListener());
+
+
 
 
 
@@ -109,7 +110,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
             total = DataLog.getFloat(DataUtils.DirectTotal, -1);
             cyano = DataLog.getFloat(DataUtils.DirectCyano, -1);
             myAlgalData = new AlgalDataCal(total, cyano, p04, surtemp, bottemp, depth, lux);
-            if (total != 1) {
+            if (total != -1) {
                 totalDataSet = myAlgalData.getTotalChlaDataSet();
             }
             if (cyano != -1) {
