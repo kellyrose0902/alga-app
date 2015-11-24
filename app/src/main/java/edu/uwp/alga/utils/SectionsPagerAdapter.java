@@ -20,6 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import edu.uwp.alga.Data.DataLogFragment;
 import edu.uwp.alga.calculator.CalculatorFragment;
 
 /**
@@ -46,6 +47,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 return CalculatorFragment.newInstance(position + 1);
+
+            case 1:
+                return DataLogFragment.create(position + 1);
             default:
                 return PlaceholderFragment.newInstance(position + 1);
         }

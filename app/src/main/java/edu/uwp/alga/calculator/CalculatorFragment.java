@@ -104,9 +104,13 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         //Manage data resource to save log and current input
         stateData = PreferenceManager.getDefaultSharedPreferences(context);
         dataPtr = stateData.getInt(DataUtils.current, 0);
-        SaveLog = context.getSharedPreferences(DataUtils.DataLog+String.valueOf(dataPtr),Context.MODE_PRIVATE);
+        Log.e("DataLog", "Pointer:" + String.valueOf(dataPtr));
+        SaveLog = context.getSharedPreferences(DataUtils.DataLog + String.valueOf(dataPtr), Context.MODE_PRIVATE);
+        Log.e("DataLog", "log" + SaveLog.toString());
+
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
+
         editor = DataInputLog.edit();
 
         initializeViewId(context);
@@ -129,8 +133,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             setChlbutton.setBackgroundResource(R.drawable.set_button_xml);
             setChlbutton.setText(context.getResources().getString(R.string.tick));
 
-            Log.e("Fragment", "setbutton");
-
         }
     }
 
@@ -145,7 +147,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 TempBottext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempBottom,0f)));
             }
             if (DataInputLog.contains(DataUtils.LakeDepth)){
-                Depthtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.LakeDepth,0f)));
+                Depthtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.LakeDepth, 0f)));
             }
         }
 
@@ -178,9 +180,9 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
                 if (checkInput()){
                     editor.putFloat(DataUtils.lux, lux);
-                    SaveLog.edit().clear().commit();
                     saveData();
-                    DataUtils.saveLog(DataInputLog,SaveLog);
+                    DataUtils.saveLog(getActivity(),DataUtils.mPreference,DataUtils.DataLog+String.valueOf(dataPtr));
+
                     dataPtr = dataPtr + 1; // increment log pointer
                     if(dataPtr == 10) dataPtr = 0; // reset log to store only 10 logs => change this to achieve more
                     Log.e("Pointer",String.valueOf(dataPtr));
