@@ -128,6 +128,10 @@ public class DataUtils {
 
     }
 
+    public static class LogHolder{
+        public String timeStamp;
+        public String LogName;
+    }
 
 
 }

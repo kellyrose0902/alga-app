@@ -25,19 +25,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.uwp.alga.R;
-import edu.uwp.alga.utils.DataLogListAdapter;
 import edu.uwp.alga.utils.DataUtils;
 
 public class DataLogFragment extends Fragment{
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     public List<String> DataLog = null;
+
+
     public View rootView;
     public ListView dataList;
 
@@ -65,11 +67,9 @@ public class DataLogFragment extends Fragment{
         Context context = getActivity();
         populateDataLogFile(context);
 
-        DataLogListAdapter adapter = new DataLogListAdapter(getActivity(),DataLog);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,DataLog);
         dataList = (ListView)rootView.findViewById(R.id.data_list);
-        if(adapter!=null){
-            dataList.setAdapter(adapter);
-        }
+        dataList.setAdapter(adapter);
 
 
 
@@ -83,6 +83,7 @@ public class DataLogFragment extends Fragment{
                     Context.MODE_PRIVATE);
             if (DataUtils.hasData(LogFile)){
                 DataLog.add(DataUtils.DataLog+String.valueOf(i));
+
             }
 
 
