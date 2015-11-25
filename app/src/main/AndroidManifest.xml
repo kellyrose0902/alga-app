@@ -35,6 +35,12 @@
         </activity>
         <activity
             android:name=".ChlaActivity"
+            android:label="@string/title_activity_po4"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Po4Activity"
             android:label="@string/title_activity_chla"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
