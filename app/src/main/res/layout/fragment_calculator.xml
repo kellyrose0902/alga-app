@@ -17,224 +17,40 @@
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WBackground">
+    android:background="@color/WBackground"
+    android:orientation="vertical">
     <!-- TODO: Extract hard coded String to String values -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/background"
         android:scaleType="fitXY"
+        android:src="@drawable/background" />
 
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_weight="12"
-
+        android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-
-        android:paddingTop="@dimen/activity_vertical_margin"
-
-        >
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po4_concentration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
                 android:text="@string/calc_po4"
-                android:id="@+id/po4_concentration" />
-
-            <!--<Button-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="2"-->
-            <!--android:text="Set"-->
-            <!--android:textColor="@color/WText"-->
-            <!--android:background="#8a8a8a"-->
-            <!--android:textStyle="bold"-->
-            <!--android:id="@+id/buttonPo"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:onClick="calculatePo"/>-->
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="mg/L"
-                android:padding="8dp"
-                android:background="@color/WText"
-                android:gravity="center"
-                android:ems="10"
-                android:id="@+id/po_edit"
-                android:layout_weight="2" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
                 android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="@string/calc_surf_temp"
-                android:id="@+id/temp_surface" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="°C"
-                android:padding="8dp"
-                android:background="@color/WText"
-                android:gravity="center"
-                android:ems="10"
-                android:id="@+id/temp_surface_edit"
-                android:layout_weight="2" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="@string/calc_bottom_temp"
-                android:id="@+id/bottom_surface" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="°C"
-                android:padding="8dp"
-                android:background="@color/WText"
-                android:gravity="center"
-                android:ems="10"
-                android:id="@+id/temp_bottom_edit"
-                android:layout_weight="2" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:textSize="@dimen/text_medium"
-                android:textColor="@color/WText"
-
-                android:text="@string/calc_lake_depth"
-                android:id="@+id/lake_depth" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="m"
-                android:padding="7dp"
-                android:background="@color/WText"
-                android:gravity="center"
-                android:ems="10"
-                android:id="@+id/lake_depth_edit"
-                android:layout_weight="2" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageButton
-                    android:layout_marginTop="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/transparent"
-                    android:src="@drawable/question"
-                    android:scaleType="centerInside"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:textSize="@dimen/text_medium"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/WText"
-                android:text="@string/calc_chl_a"
-                android:id="@+id/chl_a" />
+                android:textSize="@dimen/text_medium" />
 
             <Button
                 android:layout_width="0dp"
@@ -245,9 +61,8 @@
                 android:textColor="@color/WText"
                 android:background="@color/WGray"
                 android:textStyle="bold"
-                android:id="@+id/buttonChla"
-                android:layout_gravity="center_horizontal"
-                />
+                android:id="@+id/buttonPo4"
+                android:layout_gravity="center_horizontal" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -263,23 +78,197 @@
             </LinearLayout>
         </LinearLayout>
 
-        <RelativeLayout
-            android:orientation="horizontal"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/temp_surface"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/calc_surf_temp"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
+
+            <EditText
+                android:id="@+id/temp_surface_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/WText"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="°C"
+                android:inputType="numberDecimal"
+                android:padding="8dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/question" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/bottom_surface"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/calc_bottom_temp"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
+
+            <EditText
+                android:id="@+id/temp_bottom_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/WText"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="°C"
+                android:inputType="numberDecimal"
+                android:padding="8dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/question" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/lake_depth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/calc_lake_depth"
+
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
+
+            <EditText
+                android:id="@+id/lake_depth_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/WText"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="m"
+                android:inputType="numberDecimal"
+                android:padding="7dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/question" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chl_a"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:text="@string/calc_chl_a"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
             <Button
+                android:id="@+id/buttonChla"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2"
+                android:background="@color/WGray"
+                android:text="SET"
+                android:textColor="@color/WText"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/question" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/SubmitAll"
                 android:layout_width="170dp"
                 android:layout_height="70dp"
-                android:background="@drawable/submit_state"
-                android:src="@drawable/submit_button"
-                android:id="@+id/SubmitAll"
-
-                android:soundEffectsEnabled="true"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:background="@drawable/submit_state"
+                android:soundEffectsEnabled="true"
+                android:src="@drawable/submit_button" />
         </RelativeLayout>
     </LinearLayout>
 

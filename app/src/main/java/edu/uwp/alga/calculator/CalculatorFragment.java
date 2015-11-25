@@ -25,6 +25,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,9 +35,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.utils.Utils;
-
 import edu.uwp.alga.ChlaActivity;
+import edu.uwp.alga.Po4Activity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.SubmitActivity;
 import edu.uwp.alga.utils.DataUtils;
@@ -52,8 +52,8 @@ import edu.uwp.alga.utils.DataUtils;
 public class CalculatorFragment extends Fragment implements View.OnClickListener, SensorEventListener{
     public View rootView;
     Button setChlbutton;
+    Button setPObutton;
     Button submitData;
-    EditText POtext;
     EditText TempSurtext;
     EditText TempBottext;
     EditText Depthtext;
@@ -122,9 +122,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         setChlbutton = (Button)rootView.findViewById(R.id.buttonChla);
         setChlbutton.setOnClickListener(this);
 
+        setPObutton = (Button)rootView.findViewById(R.id.buttonPo4);
+        setPObutton.setOnClickListener(this);
+
         submitData = (Button)rootView.findViewById(R.id.SubmitAll);
         submitData.setOnClickListener(this);
-        POtext = (EditText)rootView.findViewById(R.id.po_edit);
         TempSurtext = (EditText)rootView.findViewById(R.id.temp_surface_edit);
         TempBottext = (EditText) rootView.findViewById(R.id.temp_bottom_edit);
         Depthtext = (EditText) rootView.findViewById(R.id.lake_depth_edit);
@@ -137,9 +139,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     private void initializeValue(){
-            if(DataInputLog.contains(DataUtils.PO)){
-                POtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.PO,0f)));
-            }
             if(DataInputLog.contains(DataUtils.TempSurface)){
                 TempSurtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempSurface,0f)));
             }
@@ -176,6 +175,12 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 Intent intentChl = new Intent(getActivity(), ChlaActivity.class);
                 startActivity(intentChl);
                 break;
+            case R.id.buttonPo4:
+                saveData();
+                Log.d("BUTTON", "PO4 BUTTON PUSHED");
+                Intent intentPo4 = new Intent(getActivity(), Po4Activity.class);
+                startActivity(intentPo4);
+                break;
             case R.id.SubmitAll:
 
                 if (checkInput()){
@@ -202,16 +207,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     }
 
     public boolean checkInput(){
-        if (!DataUtils.hasValue(POtext)||!DataUtils.hasValue(TempSurtext)||!DataUtils.hasValue(TempBottext)||!DataUtils.hasValue(Depthtext)){
+        if (!DataUtils.hasValue(TempSurtext)||!DataUtils.hasValue(TempBottext)||!DataUtils.hasValue(Depthtext)){
             return false;
         }
         else{
             Float value;
-            value = Float.valueOf(POtext.getText().toString());
-            if (value<0.0001 || value>7){
-                Toast.makeText(getActivity(),"Please input PO4 concentation between 0.0001 and 7",Toast.LENGTH_SHORT).show();
-                return false;
-            }
 
             value = Float.valueOf(TempSurtext.getText().toString());
             Float surtempVal = value;
@@ -241,13 +241,15 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             Toast.makeText(getActivity(),"Please set value for Chla",Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        if (!DataInputLog.getBoolean(DataUtils.isSetPo4,false)){
+            Toast.makeText(getActivity(),"Please set value for Po4",Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
 
     public void saveData(){
-
-        if(DataUtils.hasValue(POtext))
-        editor.putFloat(DataUtils.PO,Float.valueOf(POtext.getText().toString()));
 
         if(DataUtils.hasValue(TempSurtext))
         editor.putFloat(DataUtils.TempSurface,Float.valueOf(TempSurtext.getText().toString()));

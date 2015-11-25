@@ -118,14 +118,4 @@ public class MainActivity extends AppCompatActivity {
         // Make it swipeable, otherwise they will be squished together.
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
-
-
-
-
-    public void calculatePo(View view) {
-        Log.d("CALC", "Calculate Phosp");
-    }
-
-
-
 }
