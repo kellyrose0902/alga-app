@@ -34,7 +34,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.utils.Utils;
 
 import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.R;
@@ -44,7 +43,7 @@ import edu.uwp.alga.utils.DataUtils;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CalculatorFragment.OnFragmentInteractionListener} interface
+ * interface
  * to handle interaction events.
  * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -57,6 +56,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     EditText TempSurtext;
     EditText TempBottext;
     EditText Depthtext;
+    EditText LuxText;
     Float lux;
 
     SensorManager sensorManager;
@@ -128,7 +128,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         TempSurtext = (EditText)rootView.findViewById(R.id.temp_surface_edit);
         TempBottext = (EditText) rootView.findViewById(R.id.temp_bottom_edit);
         Depthtext = (EditText) rootView.findViewById(R.id.lake_depth_edit);
-
+        LuxText = (EditText)rootView.findViewById(R.id.luxtext);
         if(DataInputLog.getBoolean(DataUtils.isSetChla, false)){
             setChlbutton.setBackgroundResource(R.drawable.set_button_xml);
             setChlbutton.setText(context.getResources().getString(R.string.tick));
@@ -179,7 +179,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             case R.id.SubmitAll:
 
                 if (checkInput()){
-                    editor.putFloat(DataUtils.lux, lux);
+                    if(!DataInputLog.contains(DataUtils.lux)) editor.putFloat(DataUtils.lux, lux);
                     saveData();
                     DataUtils.saveLog(getActivity(),DataUtils.mPreference,DataUtils.DataLog+String.valueOf(dataPtr));
 
@@ -258,6 +258,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         if(DataUtils.hasValue(Depthtext))
         editor.putFloat(DataUtils.LakeDepth,Float.valueOf(Depthtext.getText().toString()));
 
+        if(DataUtils.hasValue(LuxText))
+            editor.putFloat(DataUtils.lux,Float.valueOf(LuxText.getText().toString()));
         editor.apply();
     }
 
