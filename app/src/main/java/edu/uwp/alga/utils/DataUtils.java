@@ -23,10 +23,14 @@ public class DataUtils {
     public static String LakeDepth = "LakeDepthkey";
     public static String DirectTotal = "DirectTotalChlakey";
     public static String DirectCyano = "DirectCyanoChlakey";
+    public static String DirectTotalPo4 = "DirectTotalPo4Key";
+    public static String EstimatePo4 = "EstimatePo4";
     public static String EstimateOxygen = "EstimateOxygenkey";
     public static String EstimateSecchi = "EstimateSecchikey";
     public static String isSetChla = "isSetChlakey";
+    public static String isSetPo4 = "isSetPo4key";
     public static String isDirect = "isDirectkey";
+    public static String isDirectPo4 = "isDirectPo4key";
     public static String lux = "Luxkey";
 
     public static String TimeStamp = "Timekey";
