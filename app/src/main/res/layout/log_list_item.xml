@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/log_child_select">
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/log_indent"
+        android:layout_gravity="center_vertical"/>.
+    <edu.uwp.alga.utils.LabelTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/log_hour"
+        android:textSize="20sp"
+        android:layout_marginLeft="7dp"
+        android:textColor="@color/WText"
+        android:text="log_time"/>
+
 
 </LinearLayout>

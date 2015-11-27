@@ -3,6 +3,8 @@ package edu.uwp.alga;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
@@ -38,14 +40,21 @@ public class SubmitActivity extends AppCompatActivity {
         setFragmentPagers();
         setTabLayout();
         setToolbar();
-        new Networking.UploadDataTask().execute(this);
+
+        if(isNetworkAvailable()) new Networking.UploadDataTask().execute(this);
+
         DataInputLog = getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor2 = DataInputLog.edit();
         Installation.id(this);
 
     }
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

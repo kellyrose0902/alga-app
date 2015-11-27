@@ -104,9 +104,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         //Manage data resource to save log and current input
         stateData = PreferenceManager.getDefaultSharedPreferences(context);
         dataPtr = stateData.getInt(DataUtils.current, 0);
-        Log.e("DataLog", "Pointer:" + String.valueOf(dataPtr));
         SaveLog = context.getSharedPreferences(DataUtils.DataLog + String.valueOf(dataPtr), Context.MODE_PRIVATE);
-        Log.e("DataLog", "log" + SaveLog.toString());
+
+
+        getLux();
 
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
@@ -161,7 +162,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             lux = 12000f;
             Log.e("Light", String.valueOf(lux));
         } else {
-            lux = lightSensor.getMaximumRange(); // first calibration
             sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_NORMAL);
         }
 
@@ -179,7 +179,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             case R.id.SubmitAll:
 
                 if (checkInput()){
-                    if(!DataInputLog.contains(DataUtils.lux)) editor.putFloat(DataUtils.lux, lux);
+
                     saveData();
                     DataUtils.saveLog(getActivity(),DataUtils.mPreference,DataUtils.DataLog+String.valueOf(dataPtr));
 
@@ -258,8 +258,12 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         if(DataUtils.hasValue(Depthtext))
         editor.putFloat(DataUtils.LakeDepth,Float.valueOf(Depthtext.getText().toString()));
 
-        if(DataUtils.hasValue(LuxText))
+        if(DataUtils.hasValue(LuxText)){
             editor.putFloat(DataUtils.lux,Float.valueOf(LuxText.getText().toString()));
+        }
+        else {
+            editor.putFloat(DataUtils.lux, lux);
+        }
         editor.apply();
     }
 

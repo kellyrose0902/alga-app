@@ -8,5 +8,6 @@
     <color name="WText">#FFFFFF</color>
     <color name="transparent">#00ffffff</color>
     <color name="WGray">#8a8a8a</color>
+    <color name="WSelect">#cc39334c</color>
 
 </resources>

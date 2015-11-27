@@ -32,7 +32,7 @@
                 android:textSize="@dimen/text_medium"
                 android:textColor="@color/WText"
                 android:padding="8dp"
-                android:text="PO4 at bottom"
+                android:text="PO4 Concentration"
                 />
 
             <EditText

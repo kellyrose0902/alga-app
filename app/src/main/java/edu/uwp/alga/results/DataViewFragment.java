@@ -1,6 +1,7 @@
 package edu.uwp.alga.results;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,6 +37,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
     TextView luxText;
     ArrayList<Float> totalDataSet;
     ArrayList<Float> cyanoDataSet;
+    SharedPreferences Logfile;
 
     ArrayList<Float> totalCriticalSet;
     ArrayList<Float> cyanoCriticalSet;
@@ -72,7 +73,18 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         tempdifText = (TextView)rootView.findViewById(R.id.data_tempdif);
         pavText = (TextView)rootView.findViewById(R.id.data_pav);
         //Use the current value of the input, should change later to get view from datalog
-        populateData(DataInputLog);
+        Intent intent = getActivity().getIntent();
+        String logLoc = intent.getStringExtra("LogFile");
+        if(logLoc==null){
+            populateData(DataInputLog);
+        }
+        else {
+            Logfile = context.getSharedPreferences(logLoc,
+                    Context.MODE_PRIVATE);
+            populateData(Logfile);
+            //populateData(DataInputLog);
+        }
+
         dataset.setOnClickListener(this);
         ChlaList = (ExpandableListView) rootView.findViewById(R.id.Elist);
         adapter = new ExpandableListAdapter(context, listDataHeader, listDataChild);
@@ -80,10 +92,6 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         if (listDataHeader.size()==1){
             ChlaList.expandGroup(0);
         }
-
-
-
-
 
         return rootView;
     }
@@ -102,7 +110,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         float p04 = DataLog.getFloat(DataUtils.PO, 0.0001f);
         float surtemp = DataLog.getFloat(DataUtils.TempSurface, 0f);
         float bottemp = DataLog.getFloat(DataUtils.TempBottom, 4f);
-        float depth = DataLog.getFloat(DataUtils.LakeDepth, 0);
+        float depth = DataLog.getFloat(DataUtils.LakeDepth, 0f);
         float lux = DataLog.getFloat(DataUtils.lux,12000f);
 
         boolean isDirect = DataLog.getBoolean(DataUtils.isDirect, true);
@@ -232,7 +240,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
     }
 
-    public ExpandableListView.OnGroupClickListener groupClickListener() {
+   /* public ExpandableListView.OnGroupClickListener groupClickListener() {
         ExpandableListView.OnGroupClickListener listener = new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
@@ -240,12 +248,11 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
                 if (parent.isGroupExpanded(groupPosition)) {
                     indicator.setImageResource(R.drawable.group_collapsed);
                 } else indicator.setImageResource(R.drawable.group_indicator);
-                return false;
+                return true;
             }
         };
         return listener;
-
-    }
+    }*/
 
 
     public void getDataSet(View v){
@@ -261,4 +268,6 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
         }
     }
+
+
 }

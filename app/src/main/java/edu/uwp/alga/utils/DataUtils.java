@@ -2,7 +2,6 @@ package edu.uwp.alga.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.EditText;
 
 import java.text.ParseException;
@@ -47,7 +46,7 @@ public class DataUtils {
     public static String getCurrentTimeStamp(){
         try {
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM - dd - yyyy hh:mm a");
             String currentTimeStamp = dateFormat.format(new Date()); // Find todays date
 
             return currentTimeStamp;
@@ -60,7 +59,7 @@ public class DataUtils {
 
     public static Date convertToDate(String currentTimeStamp){
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("MM - dd - yyyy hh:mm a");
         Date time = null;
         try {
             time = df.parse(currentTimeStamp);
@@ -106,7 +105,7 @@ public class DataUtils {
         SharedPreferences.Editor editor = LogData.edit();
         editor.clear().commit();
 
-        if (InputData.contains(PO)) editor.putFloat(PO,LogData.getFloat(PO,-1f));
+        if (InputData.contains(PO)) editor.putFloat(PO,InputData.getFloat(PO,-1f));
         if (InputData.contains(TempSurface)) editor.putFloat(TempSurface,InputData.getFloat(TempSurface,-1f));
         if (InputData.contains(TempBottom)) editor.putFloat(TempBottom,InputData.getFloat(TempBottom,-1f));
         if (InputData.contains(LakeDepth)) editor.putFloat(LakeDepth,InputData.getFloat(LakeDepth,-1f));
@@ -115,27 +114,15 @@ public class DataUtils {
         if (InputData.contains(EstimateOxygen)) editor.putFloat(EstimateOxygen,InputData.getFloat(EstimateOxygen,-1f));
         if (InputData.contains(EstimateSecchi)) editor.putFloat(EstimateSecchi,InputData.getFloat(EstimateSecchi,-1f));
         if (InputData.contains(lux)) editor.putFloat(lux,InputData.getFloat(lux,-1f));
-        if (InputData.contains(isDirect)) editor.putBoolean(lux,InputData.getBoolean(isDirect,true));
+        if (InputData.contains(isDirect)) editor.putBoolean(isDirect,InputData.getBoolean(isDirect,true));
         String time = getCurrentTimeStamp();
         editor.putString(TimeStamp, time);
 
-        Log.e("DataLog", "get time " + time+LogData.toString());
         editor.commit();
 
-        if (hasData(LogData)){
-            Log.e("DataLog", "hasdata");
-        }
-
-        if (LogData.contains(TimeStamp)){
-            Log.e("DataLog", "hastime");
-        }
-
     }
 
-    public static class LogHolder{
-        public String timeStamp;
-        public String LogName;
-    }
+
 
 
 }

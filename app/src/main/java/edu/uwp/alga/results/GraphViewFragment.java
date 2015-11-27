@@ -1,6 +1,7 @@
 package edu.uwp.alga.results;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,7 +28,8 @@ public class GraphViewFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     SharedPreferences DataInputLog;
     public Context context;
-    Float maxYAxisValue;
+    SharedPreferences Logfile;
+    Float maxYAxisValue = 40f;
 
     public GraphViewFragment() {
     }
@@ -52,8 +54,20 @@ public class GraphViewFragment extends Fragment {
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
 
-        //Use the current value of the input, should change later to get view from datalog
-        populateChart(DataInputLog);
+
+
+        Intent intent = getActivity().getIntent();
+        String logLoc = intent.getStringExtra("LogFile");
+        if(logLoc==null){
+            populateChart(DataInputLog);
+        }
+        else {
+            Logfile = context.getSharedPreferences(logLoc,
+                    Context.MODE_PRIVATE);
+            populateChart(Logfile);
+
+        }
+
         return view;
 
 
