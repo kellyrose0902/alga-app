@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/modify" android:title="modify"
         android:icon="@drawable/modify_icon"
-
         android:orderInCategory="100" app:showAsAction="ifRoom" />
-
+    <item android:id="@+id/log_file" android:title="log"
+        android:icon="@drawable/log_file"
+        android:orderInCategory="101" app:showAsAction="ifRoom" />
 </menu>

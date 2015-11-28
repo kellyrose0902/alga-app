@@ -42,16 +42,16 @@ public class Networking {
             String longtitute="";
             if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     || ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                LocationManager locationManager = (LocationManager)params[0].getSystemService
+                LocationManager locationManager = (LocationManager) params[0].getSystemService
                         (Context.LOCATION_SERVICE);
-
-                Location lastLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-                lat = String.valueOf(lastLocation.getLatitude());
-                longtitute = String.valueOf(lastLocation.getLongitude());
-                Log.e("Networking",lat);
-                Log.e("Networking",longtitute);
+                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    Location lastLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+                    lat = String.valueOf(lastLocation.getLatitude());
+                    longtitute = String.valueOf(lastLocation.getLongitude());
+                    Log.e("Networking", lat);
+                    Log.e("Networking", longtitute);
+                }
             }
-
 
             SharedPreferences InputDataLog = params[0].getSharedPreferences(DataUtils.mPreference,Context.MODE_PRIVATE);
             String urlParameters="";

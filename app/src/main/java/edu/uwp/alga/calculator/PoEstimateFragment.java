@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
@@ -30,11 +29,17 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     EditText Cyanotext;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    private Button farmButton;
+    private Button urbanButton;
+    private Button sandButton;
+    private Button naturalButton;
+    private Button lawnButton;
 
     /**
      * Default empty constructor.
      */
-    public PoEstimateFragment() { }
+    public PoEstimateFragment() {
+    }
 
     /**
      * Returns a new instance of this fragment for the given section number.
@@ -63,10 +68,26 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
                 Context.MODE_PRIVATE);
         editor = DataInputLog.edit();
 
-        estimateButton = (Button)rootView.findViewById(R.id.po4_submit_estimate);
-        estimateButton.setOnClickListener(this);
+        initializeViewId();
         initializeValue();
         return rootView;
+    }
+
+    private void initializeViewId() {
+        estimateButton = (Button) rootView.findViewById(R.id.po4_submit_estimate);
+        estimateButton.setOnClickListener(this);
+
+        farmButton = (Button)rootView.findViewById(R.id.farmButton);
+        farmButton.setOnClickListener(this);
+        urbanButton = (Button)rootView.findViewById(R.id.urbanButton);
+        urbanButton.setOnClickListener(this);
+        naturalButton = (Button)rootView.findViewById(R.id.naturalButton);
+        naturalButton.setOnClickListener(this);
+        lawnButton = (Button)rootView.findViewById(R.id.lawnButton);
+        lawnButton.setOnClickListener(this);
+        sandButton = (Button)rootView.findViewById(R.id.sandButton);
+        sandButton.setOnClickListener(this);
+
     }
 
     private void initializeValue() {
@@ -74,12 +95,12 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     }
 
 
-    public boolean checkInput(){
+    public boolean checkInput() {
         // Implement
         return false;
     }
 
-    public void saveData(){
+    public void saveData() {
         // Implement
     }
 
@@ -88,22 +109,51 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.po4_submit_estimate:
-                if(checkInput()){
+                if (checkInput()) {
                     saveData();
-                    editor.putBoolean(DataUtils.isSetPo4, true);
-                    editor.putBoolean(DataUtils.isDirectPo4, false);
+                    editor.putBoolean(DataUtils.isSetPO, true);
                     editor.commit();
-                    deleteDirectData();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
 
                 break;
+            case R.id.farmButton:
+                clickButton(farmButton);
+                unClickButton(urbanButton);
+                break;
+            case R.id.urbanButton:
+                clickButton(urbanButton);
+                unClickButton(farmButton);
+                break;
+            case R.id.naturalButton:
+                clickButton(naturalButton);
+                unClickButton(lawnButton);
+                unClickButton(sandButton);
+                break;
+            case R.id.lawnButton:
+                clickButton(lawnButton);
+                unClickButton(sandButton);
+                unClickButton(naturalButton);
+                break;
+            case R.id.sandButton:
+                clickButton(sandButton);
+                unClickButton(lawnButton);
+                unClickButton(naturalButton);
+                break;
+
         }
     }
 
-    private void deleteDirectData() {
-        editor.remove(DataUtils.DirectTotalPo4);
-        editor.apply();
+    public void clickButton(Button b){
+        b.setBackgroundResource(R.drawable.background_primary);
+        b.setTextColor(ContextCompat.getColor(getActivity(), R.color.WText));
+
     }
+
+    public void unClickButton(Button b){
+        b.setBackgroundResource(R.drawable.background_white);
+        b.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+    }
+
 }

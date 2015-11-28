@@ -25,10 +25,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import edu.uwp.alga.settings.PreferencesActivity;
 import edu.uwp.alga.utils.SectionsPagerAdapter;
@@ -68,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        Intent intent = getIntent();
+        if(intent.getBooleanExtra("toData",false)){
+            mViewPager.setCurrentItem(1);
+        }
+
     }
 
     /**

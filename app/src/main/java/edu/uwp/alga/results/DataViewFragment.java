@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import edu.uwp.alga.utils.DataUtils;
 import edu.uwp.alga.utils.ExpandableListAdapter;
 
 public class DataViewFragment extends Fragment implements View.OnClickListener{
-
+    private HashMap<String,List<Float>> totalData;
     private static final String ARG_SECTION_NUMBER = "section_number";
     public View rootView;
     ExpandableListAdapter adapter;
@@ -146,20 +147,12 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
     }
     public void setDataSet(){
+        totalData = new HashMap<String,List<Float>>();
         int point = 0;
         totalCriticalSet = null;
         cyanoCriticalSet = null;
 
-        if(cyanoDataSet!=null){
-            cyanoCriticalSet = new ArrayList<Float>();
-            for(int q = 0;q<=400;q++){
-                if(point==q){
-                    cyanoCriticalSet.add(cyanoDataSet.get(q));
-                    point = point + 24;
 
-                }
-            }
-        }
         if(totalDataSet!=null){
             totalCriticalSet = new ArrayList<Float>();
             for(int q = 0;q<=400;q++){
@@ -169,10 +162,20 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
                 }
             }
+            totalData.put("Total Chl a",totalCriticalSet);
         }
+        if(cyanoDataSet!=null){
+            cyanoCriticalSet = new ArrayList<Float>();
+            for(int q = 0;q<=400;q++){
+                if(point==q){
+                    cyanoCriticalSet.add(cyanoDataSet.get(q));
+                    point = point + 24;
 
+                }
+            }
+            totalData.put("Cyano Chl a",cyanoCriticalSet);
 
-
+        }
     }
 
 
@@ -264,10 +267,18 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.data_set:
                 setDataSet();
+                showDialog();
                 break;
 
         }
     }
 
+
+    public void showDialog(){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        DataSetDialog editNameDialog = new DataSetDialog();
+        editNameDialog.setData("Kelly");
+        editNameDialog.show(fm,"Fragment");
+    }
 
 }

@@ -68,21 +68,30 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initializeValue() {
-        if(DataInputLog.contains(DataUtils.DirectTotalPo4)){
-            po4DirectTotal.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotalPo4, 0f)));
+        if(DataInputLog.contains(DataUtils.PO)){
+            po4DirectTotal.setText(String.valueOf(DataInputLog.getFloat(DataUtils.PO, 0f)));
         }
     }
 
 
     public boolean checkInput(){
         if(!(DataUtils.hasValue(po4DirectTotal))) {
-            Toast.makeText(getActivity(), "You did enter any value.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "You did not enter any value.", Toast.LENGTH_SHORT).show();
             return false;
+        }else {
+            Float value;
+            value = Float.valueOf(po4DirectTotal.getText().toString());
+            if (value<0.0001 || value>7){
+                Toast.makeText(getActivity(),"Please input PO4 concentation between 0.0001 and 7",Toast.LENGTH_SHORT).show();
+                return false;
         }
+
+
 
         // TODO: Logic for boundary check.
 
         return true;
+    }
     }
 
 
@@ -91,13 +100,11 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
         //editor.clear();
         //editor.commit();
         if (DataUtils.hasValue(po4DirectTotal)){
-            editor.putFloat(DataUtils.DirectTotalPo4,Float.valueOf(po4DirectTotal.getText().toString()));
+            editor.putFloat(DataUtils.PO,Float.valueOf(po4DirectTotal.getText().toString()));
         }
 
-        editor.remove(DataUtils.DirectTotalPo4);
-
         editor.apply();
-        Log.e("Preference", "Total PO4: " + String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotalPo4, -1.0f)));
+        Log.e("Preference", "Total PO4: " + String.valueOf(DataInputLog.getFloat(DataUtils.PO, -1.0f)));
     }
 
 
@@ -108,10 +115,8 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
             case R.id.po4_submit_direct:
                 if(checkInput()){
                     saveData();
-                    editor.putBoolean(DataUtils.isSetPo4, true);
-                    editor.putBoolean(DataUtils.isDirectPo4,true);
+                    editor.putBoolean(DataUtils.isSetPO, true);
                     editor.commit();
-                    deleteEstimateData();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -120,8 +125,5 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void deleteEstimateData() {
-        editor.remove(DataUtils.EstimatePo4);
-        editor.apply();
-    }
+
 }

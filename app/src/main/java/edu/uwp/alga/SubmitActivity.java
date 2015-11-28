@@ -49,6 +49,7 @@ public class SubmitActivity extends AppCompatActivity {
         Installation.id(this);
 
     }
+
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -66,9 +67,16 @@ public class SubmitActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
+                break;
             case R.id.modify:
                 Intent intent = new Intent(this,MainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.log_file:
+                Intent intentLog = new Intent(this,MainActivity.class);
+                intentLog.putExtra("toData",true);
+                startActivity(intentLog);
+
 
                 return true;
         }

@@ -57,7 +57,7 @@ public class Po4Activity extends AppCompatActivity {
      */
     private void setToolbar() {
         final Toolbar mToolbar = (Toolbar) findViewById(R.id.po4_toolbar);
-        mToolbar.setTitle("Set PO4 Values");
+        mToolbar.setTitle("Set PO4 Value");
         setSupportActionBar(mToolbar);
 
 

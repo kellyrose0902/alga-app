@@ -39,4 +39,10 @@
     <!--symbol-->
     <string name="tick">\u2713</string>
     <string name="tick2">\u2714</string>
+
+    <!--PO estimate-->
+    <string name="PO_land_text">Type of land within 1 km of the lake:</string>
+    <string name="PO_vegetation_text">Type of vegetation near the shore:</string>
+    <string name="PO_plant_text">Quantity of plant in the lake:</string>
+    <string name="PO_frequency_text">Frequency of algea bloom occurence:</string>
 </resources>

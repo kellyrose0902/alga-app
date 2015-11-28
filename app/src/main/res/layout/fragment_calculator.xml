@@ -51,6 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/WText"
                 android:textSize="@dimen/text_medium"
                 android:text="@string/calc_po4"
@@ -67,17 +68,18 @@
             <!--android:id="@+id/buttonPo"-->
             <!--android:layout_gravity="center_horizontal"-->
             <!--android:onClick="calculatePo"/>-->
-            <EditText
+            <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="mg/L"
-                android:padding="7dp"
-                android:background="@color/WText"
-                android:gravity="center"
-                android:ems="10"
-                android:id="@+id/po_edit"
-                android:layout_weight="2" />
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:text="SET"
+                android:textSize="20dp"
+                android:textColor="@color/WText"
+                android:background="@color/WGray"
+                android:textStyle="bold"
+                android:id="@+id/buttonpo4"
+                android:layout_gravity="center_horizontal"
+                />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -279,7 +281,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_weight="2"
                 android:text="SET"
                 android:textSize="20dp"

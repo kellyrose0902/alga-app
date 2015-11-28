@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#005F63</color>
     <color name="colorPrimaryDark">#002C30</color>
-    <color name="colorAccent">#FF5252</color>
+    <!--<color name="colorAccent">#FF5252</color>-->
+    <color name="colorAccent">#FFFFFF</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="WBackground">#23173A</color>
     <color name="WText">#FFFFFF</color>
