@@ -26,12 +26,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src = "@drawable/circle_splash"
-        android:scaleType="fitXY"/>
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src = "@drawable/splash_title"
+        android:src = "@drawable/splash_bg"
         android:scaleType="fitXY"/>
 
 </FrameLayout>
