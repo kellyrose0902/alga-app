@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WBackground"
+    android:orientation="horizontal"
     android:padding="10dp">
     <edu.uwp.alga.utils.LabelTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/WText"
-        android:textSize="20sp"
-        android:text=":"/>
-    <edu.uwp.alga.utils.LabelTextView
         android:id="@+id/setIndex"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="[ 1 ]"
         android:textColor="@color/WText"
-        android:textSize="20sp"
-        android:layout_marginLeft="50dp"
-        android:text="[ 1 ]"/>
+        android:textSize="20sp" />
+    <edu.uwp.alga.utils.LabelTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text=":"
+        android:textColor="@color/WText"
+        android:textSize="20sp" />
+
     <edu.uwp.alga.utils.LabelTextView
         android:id="@+id/setValue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="20"
         android:textColor="@color/WText"
-        android:textSize="20sp"
-        android:layout_marginRight="50dp"
-        android:text="20"/>
-</RelativeLayout>
+        android:textSize="20sp" />
+</LinearLayout>

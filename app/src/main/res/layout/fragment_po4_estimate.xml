@@ -1,232 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WBackground">
+    android:background="@color/WBackground"
+    android:orientation="vertical">
     <!-- TODO: Extract hard coded String to String values -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/background"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
-        <edu.uwp.alga.utils.BoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/avg_text"
-            android:text="Avg. Phosphate(mg/L): "
-            android:textColor="#d66640"/>
-            <edu.uwp.alga.utils.BoldTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="0"
-                android:textSize="20sp"
-                android:textColor="#d66640"/>
-
-
-        </LinearLayout>
-
-        <edu.uwp.alga.utils.LabelTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/PO_land_text"
-            android:textColor="@color/WText"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            />
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp">
-            <Button
-                android:id="@+id/farmButton"
-                android:layout_width="0dp"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/WText"
-                android:text="Farm land"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"/>
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin">
 
-            <Button
-                android:id="@+id/urbanButton"
-                android:layout_width="0dp"
-                android:background="@color/WText"
-                android:layout_height="match_parent"
-                android:textAllCaps="false"
-                android:text="Urban"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp">
+
+                <edu.uwp.alga.utils.BoldTextView
+                    android:id="@+id/avg_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avg. Phosphate(mg/L): "
+                    android:textColor="#d66640"
+                    android:textSize="20sp" />
+
+                <edu.uwp.alga.utils.BoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="0"
+                    android:textColor="#d66640"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/PO_land_text"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <Button
+                    android:id="@+id/farmButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="Farm land"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WText"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/urbanButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/WText"
+                    android:text="Urban"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/PO_vegetation_text"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <Button
+                    android:id="@+id/naturalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="Natural"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WText"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/lawnButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/WText"
+                    android:text="Lawn"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/sandButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/WText"
+                    android:text="Sand"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/PO_plant_text"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="5dp"
+                android:minHeight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:progressDrawable="@drawable/seek_progress"
+                android:thumb="@drawable/thumb_small" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="None"
+                    android:textColor="@color/WText" />
+
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:text="Much"
+                    android:textColor="@color/WText" />
+            </RelativeLayout>
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/PO_frequency_text"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="5dp"
+                android:minHeight="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:progressDrawable="@drawable/seek_progress"
+                android:thumb="@drawable/thumb_small" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Never"
+                    android:textColor="@color/WText" />
+
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:text="Often"
+                    android:textColor="@color/WText" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
         </LinearLayout>
-        <edu.uwp.alga.utils.LabelTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/PO_vegetation_text"
-            android:textColor="@color/WText"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            />
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="35dp">
-            <Button
-                android:id="@+id/naturalButton"
-                android:layout_width="0dp"
-                android:textAllCaps="false"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/WText"
-                android:textStyle="bold"
-                android:text="Natural"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"/>
-            <Button
-                android:id="@+id/lawnButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/WText"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Lawn"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"/>
-            <Button
-                android:id="@+id/sandButton"
-                android:layout_width="0dp"
-                android:background="@color/WText"
-                android:layout_height="match_parent"
-                android:textAllCaps="false"
-                android:text="Sand"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <edu.uwp.alga.utils.LabelTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/PO_plant_text"
-            android:textColor="@color/WText"
-            android:textSize="20sp"
-            android:layout_marginBottom="5dp"
-            />
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:thumb="@drawable/thumb_small"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:minHeight="5dp"
-            android:maxHeight="5dp"
-            android:progressDrawable="@drawable/seek_progress"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="None"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/WText"/>
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Much"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/WText"
-                android:layout_gravity="right" />
-        </RelativeLayout>
-        <edu.uwp.alga.utils.LabelTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/PO_frequency_text"
-            android:textColor="@color/WText"
-            android:textSize="20sp"
-            android:layout_marginBottom="5dp"
-            />
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:thumb="@drawable/thumb_small"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:minHeight="5dp"
-            android:maxHeight="5dp"
-            android:progressDrawable="@drawable/seek_progress"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp">
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Never"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/WText"/>
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Often"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/WText"
-                android:layout_gravity="right" />
-        </RelativeLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-
-        android:background="@drawable/submit_state"
-        android:src="@drawable/submit_button"
         android:id="@+id/po4_submit_estimate"
+        android:layout_width="150dp"
+
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
 
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="right|bottom" />
+        android:layout_gravity="right|bottom"
+        android:background="@drawable/submit_state"
+        android:src="@drawable/submit_button" />
 
 
 </FrameLayout>

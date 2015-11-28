@@ -23,7 +23,6 @@ import edu.uwp.alga.utils.DataUtils;
 import edu.uwp.alga.utils.ExpandableListAdapter;
 
 public class DataViewFragment extends Fragment implements View.OnClickListener{
-    private HashMap<String,List<Float>> totalData;
     private static final String ARG_SECTION_NUMBER = "section_number";
     public View rootView;
     ExpandableListAdapter adapter;
@@ -39,9 +38,10 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
     ArrayList<Float> totalDataSet;
     ArrayList<Float> cyanoDataSet;
     SharedPreferences Logfile;
-
     ArrayList<Float> totalCriticalSet;
     ArrayList<Float> cyanoCriticalSet;
+    private HashMap<String, List<Float>> totalData;
+    private List<String> totalDataHeader;
 
 
     public DataViewFragment() {
@@ -120,9 +120,11 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
             cyano = DataLog.getFloat(DataUtils.DirectCyano, -1);
             myAlgalData = new AlgalDataCal(total, cyano, p04, surtemp, bottemp, depth, lux);
             if (total != -1) {
+                totalDataSet = new ArrayList<>();
                 totalDataSet = myAlgalData.getTotalChlaDataSet();
             }
             if (cyano != -1) {
+                cyanoDataSet = new ArrayList<>();
                 cyanoDataSet = myAlgalData.getCyanoChlaDataSet();
             }
         } else {
@@ -130,8 +132,10 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
             secchi = DataLog.getFloat(DataUtils.EstimateSecchi, 0.1f);
             myAlgalData = new AlgalDataCal(secchi, oxygen, p04, surtemp, bottemp, depth, lux, true);
             if (oxygen != -1) {
+                totalDataSet = new ArrayList<>();
                 totalDataSet = myAlgalData.getTotalChlaDataSet();
             }
+            cyanoDataSet = new ArrayList<>();
             cyanoDataSet = myAlgalData.getCyanoChlaDataSet();
         }
 
@@ -148,10 +152,10 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
     }
     public void setDataSet(){
         totalData = new HashMap<String,List<Float>>();
+        totalDataHeader = new ArrayList<String>();
         int point = 0;
         totalCriticalSet = null;
         cyanoCriticalSet = null;
-
 
         if(totalDataSet!=null){
             totalCriticalSet = new ArrayList<Float>();
@@ -162,8 +166,10 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
                 }
             }
+            totalDataHeader.add("Total Chl a");
             totalData.put("Total Chl a",totalCriticalSet);
         }
+        point = 0;
         if(cyanoDataSet!=null){
             cyanoCriticalSet = new ArrayList<Float>();
             for(int q = 0;q<=400;q++){
@@ -173,6 +179,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
                 }
             }
+            totalDataHeader.add("Cyano Chl a");
             totalData.put("Cyano Chl a",cyanoCriticalSet);
 
         }
@@ -277,7 +284,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
     public void showDialog(){
         FragmentManager fm = getActivity().getSupportFragmentManager();
         DataSetDialog editNameDialog = new DataSetDialog();
-        editNameDialog.setData("Kelly");
+        editNameDialog.setData(totalDataHeader, totalData);
         editNameDialog.show(fm,"Fragment");
     }
 
