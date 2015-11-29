@@ -24,9 +24,9 @@
     android:fitsSystemWindows="true" tools:context=".Splash"
     android:background="@color/WBackground">
     <ImageView
+        android:id="@+id/image_splash"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src = "@drawable/spash"
         android:scaleType="fitXY"/>
 
 </FrameLayout>

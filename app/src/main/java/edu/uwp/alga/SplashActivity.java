@@ -17,9 +17,13 @@ package edu.uwp.alga;
  */
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,10 +32,26 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.spash);
+        ImageView image = (ImageView)findViewById(R.id.image_splash);
+
+
+        if(bitmap.getHeight()>=2048||bitmap.getWidth()>=2048){
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int width = metrics.widthPixels;
+            int height = metrics.heightPixels;
+            bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        }
+        image.setImageBitmap(bitmap);
+
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
-        }, 1000);
+        }, 2000);
     }
+
+
 }
 
