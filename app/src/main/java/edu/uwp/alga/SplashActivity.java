@@ -36,20 +36,21 @@ public class SplashActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.spash);
         ImageView image = (ImageView)findViewById(R.id.image_splash);
 
-
         if(bitmap.getHeight()>=2048||bitmap.getWidth()>=2048){
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
             int height = metrics.heightPixels;
             bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+
         }
         image.setImageBitmap(bitmap);
 
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
             finish();
-        }, 2000);
+        }, 1500);
     }
 
 

@@ -3,14 +3,23 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
@@ -34,6 +43,18 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     private Button sandButton;
     private Button naturalButton;
     private Button lawnButton;
+    private SeekBar plantSeek;
+    private SeekBar bloomSeek;
+    ImageView background;
+    private TextView po4Val;
+    private float location = 0.065f;
+    private float landVegetation = 0.002f;
+    private float waterVegetation = 0.034f;
+    private float recurringBlooms = 0.002f;
+    private float scaleBloom = (0.065f-0.002f)/100;
+    private float scalePlant = (0.065f-0.034f)/100;
+    public static DecimalFormat df = new DecimalFormat("0.00000");
+
 
     /**
      * Default empty constructor.
@@ -67,9 +88,45 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor = DataInputLog.edit();
-
         initializeViewId();
-        initializeValue();
+        background = (ImageView)rootView.findViewById(R.id.po4_estimate_BG);
+        background.setImageBitmap(getBackground());
+        calculatePO4();
+        bloomSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                recurringBlooms = 0.002f + (progress * scaleBloom);
+                calculatePO4();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        plantSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                waterVegetation = 0.034f + progress * scalePlant;
+                calculatePO4();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         return rootView;
     }
 
@@ -87,21 +144,18 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
         lawnButton.setOnClickListener(this);
         sandButton = (Button)rootView.findViewById(R.id.sandButton);
         sandButton.setOnClickListener(this);
-
+        po4Val = (TextView)rootView.findViewById(R.id.po4_estimate_val);
+        plantSeek = (SeekBar)rootView.findViewById(R.id.plant_seekbar);
+        bloomSeek = (SeekBar)rootView.findViewById(R.id.bloom_seekbar);
     }
 
-    private void initializeValue() {
-        // Implement
-    }
 
 
-    public boolean checkInput() {
-        // Implement
-        return false;
-    }
+
 
     public void saveData() {
-        // Implement
+        editor.putFloat(DataUtils.PO,Float.valueOf(po4Val.getText().toString()));
+        editor.apply();
     }
 
 
@@ -109,42 +163,62 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.po4_submit_estimate:
-                if (checkInput()) {
-                    saveData();
-                    editor.putBoolean(DataUtils.isSetPO, true);
-                    editor.commit();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                }
-
+                saveData();
+                editor.putBoolean(DataUtils.isSetPO, true);
+                editor.commit();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
                 break;
             case R.id.farmButton:
                 clickButton(farmButton);
                 unClickButton(urbanButton);
+                location = 0.065f;
+                calculatePO4();
                 break;
             case R.id.urbanButton:
                 clickButton(urbanButton);
                 unClickButton(farmButton);
+                location = 0.034f;
+                calculatePO4();
                 break;
             case R.id.naturalButton:
                 clickButton(naturalButton);
                 unClickButton(lawnButton);
                 unClickButton(sandButton);
+                landVegetation = 0.002f;
+                calculatePO4();
                 break;
             case R.id.lawnButton:
                 clickButton(lawnButton);
                 unClickButton(sandButton);
                 unClickButton(naturalButton);
+                landVegetation = 0.065f;
+                calculatePO4();
                 break;
             case R.id.sandButton:
                 clickButton(sandButton);
                 unClickButton(lawnButton);
                 unClickButton(naturalButton);
+                landVegetation = 0.002f;
+                calculatePO4();
                 break;
 
         }
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background", String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     public void clickButton(Button b){
         b.setBackgroundResource(R.drawable.background_primary);
         b.setTextColor(ContextCompat.getColor(getActivity(), R.color.WText));
@@ -155,5 +229,13 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
         b.setBackgroundResource(R.drawable.background_white);
         b.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
     }
+
+    public void calculatePO4(){
+        float value = 0.1f*location + 0.4f*landVegetation + 0.1f*waterVegetation + 0.4f*recurringBlooms;
+        float finalVal = 44.2222f* value - 0.36f;
+        po4Val.setText(df.format(finalVal));
+    }
+
+
 
 }

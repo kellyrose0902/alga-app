@@ -19,14 +19,18 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
@@ -40,6 +44,7 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
     public View rootView;
     EditText Totaltext;
     EditText Cyanotext;
+    ImageView background;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
     public ChlaDirectFragment() {
@@ -76,17 +81,34 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         Cyanotext = (EditText)rootView.findViewById(R.id.direct_cyano);
         directButton = (Button)rootView.findViewById(R.id.submit_direct);
         directButton.setOnClickListener(this);
+        background = (ImageView)rootView.findViewById(R.id.chla_direct_BG);
+        background.setImageBitmap(getBackground());
         initializeValue();
         return rootView;
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background", String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     private void initializeValue() {
         if(DataInputLog.contains(DataUtils.DirectTotal)){
             Totaltext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, 0f)));
+            Totaltext.setSelection(Totaltext.getText().length());
         }
 
         if(DataInputLog.contains(DataUtils.DirectCyano)){
             Cyanotext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectCyano, 0f)));
+            Cyanotext.setSelection(Cyanotext.getText().length());
         }
     }
 

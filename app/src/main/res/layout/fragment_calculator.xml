@@ -24,8 +24,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/background"
+        android:id="@+id/calculatorBG"
         android:scaleType="fitXY"
+        android:background="@drawable/background"
 
         />
     <LinearLayout
@@ -85,6 +86,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageButton
+                    android:id="@+id/help_po"
                     android:layout_marginTop="10dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -116,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:hint="°C"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:padding="7dp"
                 android:background="@color/WText"
                 android:gravity="center"
@@ -128,6 +131,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageButton
+                    android:id="@+id/help_sur"
                     android:layout_marginTop="10dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -158,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:hint="°C"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:padding="7dp"
                 android:background="@color/WText"
                 android:gravity="center"
@@ -171,6 +176,7 @@
                 android:layout_weight="1">
                 <ImageButton
                     android:layout_marginTop="10dp"
+                    android:id="@+id/help_bot"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:background="@color/transparent"
@@ -202,6 +208,7 @@
                 android:inputType="numberDecimal"
                 android:hint="m"
                 android:padding="7dp"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:background="@color/WText"
                 android:gravity="center"
                 android:ems="10"
@@ -215,6 +222,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:id="@+id/help_depth"
                     android:background="@color/transparent"
                     android:src="@drawable/question"
                     android:scaleType="centerInside"
@@ -244,6 +252,7 @@
                 android:hint="m"
                 android:padding="7dp"
                 android:background="@color/WText"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:gravity="center"
                 android:ems="10"
                 android:id="@+id/luxtext"
@@ -258,6 +267,7 @@
                     android:layout_height="20dp"
                     android:background="@color/transparent"
                     android:src="@drawable/question"
+                    android:id="@+id/help_lux"
                     android:scaleType="centerInside"
                     android:layout_weight="1"/>
             </LinearLayout>
@@ -301,6 +311,7 @@
                     android:layout_height="20dp"
                     android:background="@color/transparent"
                     android:src="@drawable/question"
+                    android:id="@+id/help_chla"
                     android:scaleType="centerInside"
                     android:layout_weight="1"/>
             </LinearLayout>

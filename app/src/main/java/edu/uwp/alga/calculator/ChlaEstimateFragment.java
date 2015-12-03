@@ -19,14 +19,18 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
@@ -40,6 +44,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
     Button estimateButton;
     EditText Sechitext;
     EditText Oxygentext;
+    ImageView background;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
     public ChlaEstimateFragment() {}
@@ -76,18 +81,35 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         Oxygentext = (EditText)rootView.findViewById(R.id.Oxygen_input);
         Sechitext = (EditText)rootView.findViewById(R.id.Secchi_input);
         initializeValue();
+        background = (ImageView)rootView.findViewById(R.id.chla_estimate_BG);
+        background.setImageBitmap(getBackground());
         return rootView;
     }
     public void initializeValue(){
         if(DataInputLog.contains(DataUtils.EstimateOxygen)){
             Oxygentext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.EstimateOxygen, 0f)));
+            Oxygentext.setSelection(Oxygentext.getText().length());
         }
 
         if(DataInputLog.contains(DataUtils.EstimateSecchi)){
             Sechitext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.EstimateSecchi, 0f)));
+            Sechitext.setSelection(Sechitext.getText().length());
         }
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     //Sanitize data, check if enough fields have been input
     public boolean checkInput(){
         if(!(DataUtils.hasValue(Sechitext))){

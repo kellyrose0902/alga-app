@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/background"
+        android:id="@+id/po4_direct_BG"
         android:scaleType="fitXY"
 
         />
@@ -41,6 +41,7 @@
                 android:inputType="numberDecimal"
                 android:hint="mg/L"
                 android:id="@+id/po4_direct_total"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:background="@color/WText"
                 android:gravity="center"
                 android:ems="10"

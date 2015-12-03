@@ -3,14 +3,18 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
@@ -29,6 +33,7 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
     EditText po4DirectTotal;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    ImageView background;
     public PoDirectFragment() {
     }
 
@@ -60,16 +65,31 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
         editor = DataInputLog.edit();
 
         po4DirectTotal = (EditText) rootView.findViewById(R.id.po4_direct_total);
-
         directButton = (Button) rootView.findViewById(R.id.po4_submit_direct);
         directButton.setOnClickListener(this);
+        background = (ImageView)rootView.findViewById(R.id.po4_direct_BG);
+        background.setImageBitmap(getBackground());
         initializeValue();
         return rootView;
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background", String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     private void initializeValue() {
         if(DataInputLog.contains(DataUtils.PO)){
             po4DirectTotal.setText(String.valueOf(DataInputLog.getFloat(DataUtils.PO, 0f)));
+            po4DirectTotal.setSelection(po4DirectTotal.getText().length());
         }
     }
 

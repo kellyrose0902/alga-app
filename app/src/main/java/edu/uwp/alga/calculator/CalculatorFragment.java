@@ -26,14 +26,16 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
-
 
 import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.Po4Activity;
@@ -54,12 +56,18 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     Button setChlbutton;
     Button setPObutton;
     Button submitData;
-    EditText POtext;
     EditText TempSurtext;
     EditText TempBottext;
     EditText Depthtext;
     EditText LuxText;
+    ImageButton helpPO;
+    ImageButton helpSur;
+    ImageButton helpBot;
+    ImageButton helpLux;
+    ImageButton helpDepth;
+    ImageButton helpChla;
     Float lux;
+    ImageView background;
 
     SensorManager sensorManager;
     Sensor lightSensor;
@@ -103,10 +111,15 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         Context context = getActivity();
         getLux();
 
+        background = (ImageView)rootView.findViewById(R.id.calculatorBG);
+
+
         //Manage data resource to save log and current input
         stateData = PreferenceManager.getDefaultSharedPreferences(context);
         dataPtr = stateData.getInt(DataUtils.current, 0);
         SaveLog = context.getSharedPreferences(DataUtils.DataLog + String.valueOf(dataPtr), Context.MODE_PRIVATE);
+
+
 
 
         getLux();
@@ -146,18 +159,39 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             setPObutton.setText(context.getResources().getString(R.string.tick));
 
         }
+
+        helpPO = (ImageButton)rootView.findViewById(R.id.help_po);
+        helpPO.setOnClickListener(this);
+
+        helpSur = (ImageButton)rootView.findViewById(R.id.help_sur);
+        helpSur.setOnClickListener(this);
+
+        helpBot = (ImageButton)rootView.findViewById(R.id.help_bot);
+        helpBot.setOnClickListener(this);
+
+        helpDepth = (ImageButton)rootView.findViewById(R.id.help_depth);
+        helpDepth.setOnClickListener(this);
+
+        helpLux = (ImageButton)rootView.findViewById(R.id.help_lux);
+        helpLux.setOnClickListener(this);
+
+        helpChla = (ImageButton)rootView.findViewById(R.id.help_chla);
+        helpChla.setOnClickListener(this);
     }
 
     private void initializeValue(){
 
             if(DataInputLog.contains(DataUtils.TempSurface)){
                 TempSurtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempSurface,0f)));
+                TempSurtext.setSelection(TempSurtext.getText().length());
             }
             if(DataInputLog.contains(DataUtils.TempBottom)){
                 TempBottext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempBottom,0f)));
+                TempBottext.setSelection(TempBottext.getText().length());
             }
             if (DataInputLog.contains(DataUtils.LakeDepth)){
                 Depthtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.LakeDepth, 0f)));
+                Depthtext.setSelection(Depthtext.getText().length());
             }
         }
 
@@ -171,7 +205,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             lux = 12000f;
             Log.e("Light", String.valueOf(lux));
         } else {
-            sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
 
@@ -210,9 +244,32 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 //test clear
 
                 break;
+            case R.id.help_po:
+                showDialog();
+                break;
 
-
+            case R.id.help_sur:
+                showDialog();
+                break;
+            case R.id.help_bot:
+                showDialog();
+                break;
+            case R.id.help_depth:
+                showDialog();
+                break;
+            case R.id.help_lux:
+                showDialog();
+                break;
+            case R.id.help_chla:
+                showDialog();
+                break;
         }
+    }
+
+    public void showDialog(){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.show(fm,"Fragment");
     }
 
     public boolean checkInput(){

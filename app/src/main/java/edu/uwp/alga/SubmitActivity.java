@@ -12,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -128,7 +127,6 @@ public class SubmitActivity extends AppCompatActivity {
         editor2.commit();
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
-        Log.d("Debug","test");
     }
 
 

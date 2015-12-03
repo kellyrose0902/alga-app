@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 
 import edu.uwp.alga.utils.PoSectionsPagerAdapter;
 
@@ -30,6 +31,30 @@ public class Po4Activity extends AppCompatActivity {
         setFragmentPagers();
         setTabLayout();
         setToolbar();
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if (state == ViewPager.SCROLL_STATE_IDLE)
+                {
+                    if (mViewPager.getCurrentItem() == 1)
+                    {
+                        // Hide the keyboard.
+                        ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE))
+                                .hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);
+                    }
+                }
+            }
+        });
     }
 
     @Override
