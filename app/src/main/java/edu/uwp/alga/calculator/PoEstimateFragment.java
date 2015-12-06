@@ -32,12 +32,14 @@ import edu.uwp.alga.utils.DataUtils;
 public class PoEstimateFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    Button estimateButton;
+    public static DecimalFormat df = new DecimalFormat("0.0000");
     public View rootView;
+    Button estimateButton;
     EditText Totaltext;
     EditText Cyanotext;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    ImageView background;
     private Button farmButton;
     private Button urbanButton;
     private Button sandButton;
@@ -45,7 +47,6 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     private Button lawnButton;
     private SeekBar plantSeek;
     private SeekBar bloomSeek;
-    ImageView background;
     private TextView po4Val;
     private float location = 0.065f;
     private float landVegetation = 0.002f;
@@ -53,7 +54,6 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
     private float recurringBlooms = 0.002f;
     private float scaleBloom = (0.065f-0.002f)/100;
     private float scalePlant = (0.065f-0.034f)/100;
-    public static DecimalFormat df = new DecimalFormat("0.00000");
 
 
     /**

@@ -33,11 +33,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 public class ChlaDirectFragment extends Fragment implements View.OnClickListener {
 
@@ -120,20 +120,20 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
 
     public boolean checkInput(){
         if(!(DataUtils.hasValue(Totaltext)||DataUtils.hasValue(Cyanotext))){
-            Toast.makeText(getActivity(),"Input at least 1 field",Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Input at least 1 field");
             return false;
         }
         if(DataUtils.hasValue(Totaltext)){
             Float value = Float.valueOf(Totaltext.getText().toString());
             if (value < 0 || value > 300){
-                Toast.makeText(getActivity(),"Please input Total Chl a value between 0 and 300",Toast.LENGTH_SHORT);
+                HelpUtils.makeToast(getActivity(), "Please input Total Chl a value between 0 and 300");
                 return false;
             }
         }
         if(DataUtils.hasValue(Cyanotext)) {
             Float value = Float.valueOf(Cyanotext.getText().toString());
             if (value < 0 || value > 300) {
-                Toast.makeText(getActivity(), "Please input Cyano Chl a value between 0 and 300", Toast.LENGTH_SHORT);
+                HelpUtils.makeToast(getActivity(), "Please input Cyano Chl a value between 0 and 300");
                 return false;
             }
         }

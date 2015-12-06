@@ -52,8 +52,10 @@ public class HelpFragmentDialog extends DialogFragment {
             rootView = inflater.inflate(R.layout.dialog_help_chla, container);
         } else if (help_type.equals("direct")) {
             rootView = inflater.inflate(R.layout.dialog_help_direct, container);
+        } else if (help_type.equals("po")) {
+            rootView = inflater.inflate(R.layout.dialog_help_po, container);
         } else {
-            rootView = inflater.inflate(R.layout.dialog_help_dummy, container);
+            rootView = inflater.inflate(R.layout.dialog_help_podirect, container);
         }
 
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -69,7 +71,7 @@ public class HelpFragmentDialog extends DialogFragment {
     {
 
         super.onResume();
-        if (!help_type.equals("depth")) {
+        if (!help_type.equals("depth") && !help_type.equals("po")) {
             DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
             int width = displayMetrics.widthPixels;
             int height = displayMetrics.heightPixels;

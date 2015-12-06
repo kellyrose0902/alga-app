@@ -12,4 +12,9 @@
     <color name="WSelect">#cc39334c</color>
     <color name="WOrange">#d66640</color>
 
+    <color name="WgraphBG">#8FA3AD</color>
+    <color name="WgraphTotal">#00569A</color>
+    <color name="WgraphCyano">#004C3F</color>
+    <color name="WgraphLimit">#B61B1B</color>
+
 </resources>

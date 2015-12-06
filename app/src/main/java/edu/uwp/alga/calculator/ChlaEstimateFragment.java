@@ -33,11 +33,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 public class ChlaEstimateFragment extends Fragment implements View.OnClickListener {
 
@@ -121,13 +121,13 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
     //Sanitize data, check if enough fields have been input
     public boolean checkInput(){
         if(!(DataUtils.hasValue(Sechitext))){
-            Toast.makeText(getActivity(), "Please input secchi depth", Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Please input secchi depth");
             return false;
         }
         else {
             Float value = Float.valueOf(Sechitext.getText().toString());
             if (value <= 0 || value > 1) {
-                Toast.makeText(getActivity(), "Please input Secchi Depth value between 0 and 1", Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Secchi Depth value between 0 and 1");
                 return false;
             }
         }
@@ -135,7 +135,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         if(DataUtils.hasValue(Oxygentext)) {
             Float value = Float.valueOf(Oxygentext.getText().toString());
             if (value < 1 || value > 100) {
-                Toast.makeText(getActivity(), "Please input Oxygen Dissolved value between 1 and 100", Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Oxygen Dissolved value between 1 and 100");
                 return false;
             }
         }

@@ -68,11 +68,8 @@ public class DataUtils {
 //simple test to check if the data is available
 
     public static boolean hasData(SharedPreferences preferences){
-        if(preferences.contains(PO) && preferences.contains(TempSurface) && preferences.contains(TempBottom)
-                && preferences.contains(lux) && preferences.contains(LakeDepth)){
-            return true;
-        }
-        return false;
+        return preferences.contains(PO) && preferences.contains(TempSurface) && preferences.contains(TempBottom)
+                && preferences.contains(lux) && preferences.contains(LakeDepth);
     }
 
     /*public static void saveLog(SharedPreferences InputData, SharedPreferences LogData){
@@ -118,8 +115,6 @@ public class DataUtils {
         editor.commit();
 
     }
-
-
 
 
 }

@@ -35,13 +35,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.Po4Activity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.SubmitActivity;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -238,13 +238,13 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                     startActivity(intentData);
                 }
                 else {
-                    Toast.makeText(getActivity(),"Please input more data",Toast.LENGTH_SHORT).show();
+                    HelpUtils.makeToast(getActivity(), "Please input more data");
                 }
                 //test clear
 
                 break;
             case R.id.help_po:
-                showDialog("");
+                showDialog("po");
                 break;
 
             case R.id.help_sur:
@@ -277,40 +277,35 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             return false;
         }
         else{
-           /* Float value;
-            value = Float.valueOf(POtext.getText().toString());
-            if (value<0.0001 || value>7){
-                Toast.makeText(getActivity(),"Please input PO4 concentation between 0.0001 and 7",Toast.LENGTH_SHORT).show();
-                return false;
-            }*/
+
             Float value;
 
             value = Float.valueOf(TempSurtext.getText().toString());
             Float surtempVal = value;
             if (value<0 || value>40){
-                Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
                 return false;
             }
             value = Float.valueOf(TempBottext.getText().toString());
             Float bottempVal = value;
             if (value<0 || value>40){
-                Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
                 return false;
             }
 
             if(bottempVal>surtempVal){
-                Toast.makeText(getActivity(),"Bottom temperature cannot be greater that surface temperature",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Bottom temperature cannot be greater that surface temperature");
                 return false;
             }
 
             value = Float.valueOf(Depthtext.getText().toString());
             if (value<=0 || value>5){
-                Toast.makeText(getActivity(),"Algal bloom will not happen if lake depth > 5",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Algal bloom will not happen if lake depth > 5");
                 return false;
             }
         }
         if (!DataInputLog.getBoolean(DataUtils.isSetChla,false)){
-            Toast.makeText(getActivity(),"Please set value for Chla",Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Please set value for Chla");
             return false;
         }
 

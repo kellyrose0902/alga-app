@@ -1,8 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dialog_background"
-    android:orientation="vertical">
+    android:layout_gravity="center"
 
-</LinearLayout>
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/podirect_line0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="For collection of bottom phosphate values you will need a deep water sampler"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/sur_indent1b"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/podirect_line0"
+                android:layout_marginTop="20dp"
+
+                android:paddingBottom="5dp"
+
+                android:src="@drawable/dialog_indent2" />
+
+            <edu.uwp.alga.utils.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/sur_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="25dp"
+                android:text="Materials and preparation:"
+                android:textColor="@color/WOrange"
+                android:textSize="23sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="a.  A narrow-mouthed glass bottle containing less than 500 ml of water. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="b.  A stopper that fits tight into the mouth of the bottle. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="c.  Firmly attach a weight (stone or a heavy piece of metal) to the lower part of the bottle so that the bottle will easily sink.  "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="d.  Attach a string to the neck of the bottle.  "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text4"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="e.  Attach the stopper securely to the same piece of string, just above the opening of the bottle, at a distance equal to at least twice the length of the stopper. .  "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <!--<ImageView-->
+            <!--android:id="@+id/sur_indent2b"-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="15dp"-->
+            <!--android:layout_below="@+id/sur_text4"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:paddingBottom="5dp"-->
+
+            <!--android:src="@drawable/dialog_indent2" />-->
+
+            <!--<edu.uwp.alga.utils.BoldTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@+id/sur_indent2b"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginStart="25dp"-->
+            <!--android:text="Sampling procedure:"-->
+            <!--android:textColor="@color/WOrange"-->
+            <!--android:textSize="23sp" />-->
+
+            <!--<edu.uwp.alga.utils.LabelTextView-->
+            <!--android:id="@+id/sur_text5"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/sur_indent2b"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:lineSpacingExtra="4dp"-->
+            <!--android:text="1. A narrow-mouthed glass bottle containing less than 500 ml of water. "-->
+            <!--android:textColor="@color/WText"-->
+            <!--android:textSize="20sp" />-->
+
+            <!--<edu.uwp.alga.utils.LabelTextView-->
+            <!--android:id="@+id/sur_text6"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/sur_text5"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:lineSpacingExtra="4dp"-->
+            <!--android:text="2. A stopper that fits tight into the mouth of the bottle. "-->
+            <!--android:textColor="@color/WText"-->
+            <!--android:textSize="20sp" />-->
+
+            <!--<edu.uwp.alga.utils.LabelTextView-->
+            <!--android:id="@+id/sur_text7"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/sur_text6"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:lineSpacingExtra="4dp"-->
+            <!--android:text="3. Firmly attach a weight (stone or a heavy piece of metal) to the lower part of the bottle so that the bottle will easily sink.  "-->
+            <!--android:textColor="@color/WText"-->
+            <!--android:textSize="20sp" />-->
+
+            <!--<edu.uwp.alga.utils.LabelTextView-->
+            <!--android:id="@+id/sur_text8"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/sur_text7"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:lineSpacingExtra="4dp"-->
+            <!--android:text="4. Attach a string to the neck of the bottle.  "-->
+            <!--android:textColor="@color/WText"-->
+            <!--android:textSize="20sp" />-->
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

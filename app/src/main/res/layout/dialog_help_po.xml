@@ -17,159 +17,69 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:paddingRight="5dp">
 
-            <ImageView
-                android:id="@+id/bot_indent1"
-                android:layout_width="10dp"
-                android:layout_height="15dp"
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_line0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/dialog_indent" />
+                android:lineSpacingExtra="4dp"
+                android:text="Phosphorus is an important nutrient element.Many important molecules within a cell contain Phosphorus. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bot_indent1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="25dp"
-                android:text="You will need :"
-                android:textColor="@color/WText"
-                android:textSize="23sp" />
-
-            <LinearLayout
-                android:id="@+id/bot_line1"
+                android:id="@+id/po_line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_indent1"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
-
-                    <edu.uwp.alga.utils.BoldTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
-
-                        android:text="Algea Torch"
-                        android:textColor="@color/WText"
-                        android:textSize="20sp" />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/dialog_torch" />
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <edu.uwp.alga.utils.LabelTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:lineSpacingExtra="4dp"
-                        android:text="This allows direct measurement at the water source, helping to reduce failures due to transporting the sample to the lab"
-                        android:textColor="@color/WText"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/bot_indent1b"
-                android:layout_width="10dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/bot_line1"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="5dp"
-
-                android:src="@drawable/dialog_indent" />
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bot_indent1b"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="25dp"
-                android:text="How to use :"
+                android:layout_below="@+id/po_line0"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="ATP is an example of a molecule that uses phosphorus. ATP is essential to all living organisms since it is used for energy. However, too much phosphorus in a system could cause an algea bloom. So to predict algea bloom we need to measure the phosphate concentration at the bottom."
                 android:textColor="@color/WText"
-                android:textSize="23sp" />
+                android:textSize="20sp" />
 
-            <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text1"
+
+            <edu.uwp.alga.utils.BoldTextView
+                android:id="@+id/po_indent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_indent1b"
-                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/po_line1"
+                android:layout_marginTop="10dp"
+                android:text="Two options for inputting P04 concentration value:"
+                android:textColor="@color/WOrange"
+                android:textSize="20sp"
+
+                />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/po_indent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text="1. Place the torch in the water and wait for the analysis to complete"
+                android:text="1. Directly input after measuring phosphate value by yourself"
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text2"
+                android:id="@+id/po_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text1"
-                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/po_text1"
+                android:layout_marginLeft="10dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:lineSpacingExtra="4dp"
-                android:text="2. The values shown on the torch are your results "
+                android:text="2. Estimate phosphate concentration based on the condition of the examinizing lake "
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text2"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:lineSpacingExtra="4dp"
-                android:text="3.	The torch can measure both Total Chlorophyll a (for all types of algea) and Cyano Chlorophyll a (for blue-green algae) "
-                android:textColor="@color/WText"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/bot_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text3"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/dialog_direct" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_below="@+id/bot_image" />
-
-
         </RelativeLayout>
 
     </ScrollView>

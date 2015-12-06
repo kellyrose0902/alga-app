@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WBackground">
+    android:background="@color/WBackground"
+    android:orientation="vertical">
 
 
 
@@ -20,59 +21,59 @@
 
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_weight="1">
 
             <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:text="@string/submit_temp_diff"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="54 °C"
                 android:id="@+id/data_tempdif"
-                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="@string/submit_pav"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-            <edu.uwp.alga.utils.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
                 android:text="54 °C"
-                android:id="@+id/data_pav"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:text="@string/submit_pav"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/data_pav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentTop="true"
+                android:text="54 °C"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
 
         </RelativeLayout>
@@ -87,38 +88,39 @@
             <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="Lux"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Lux"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
             <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/data_lux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
-                android:text="1200"
-                android:id="@+id/data_lux"
-                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentTop="true"
+                android:text="1200"
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
 
         </RelativeLayout>
 
                 <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
+                    android:layout_weight="8"
+                    android:orientation="horizontal">
 
         <ExpandableListView
+            android:id="@+id/Elist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Elist"
-            android:groupIndicator="@null"
             android:layout_marginRight="20dp"
+            android:groupIndicator="@null"
+            android:scrollbars="none"
             >
 
         </ExpandableListView>
@@ -126,25 +128,25 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_weight="3"
+            android:orientation="horizontal">
 
 
             <Button
+                android:id="@+id/data_set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data Set"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:background="@color/colorPrimary"
-                android:textColor="@color/WText"
-                android:id="@+id/data_set"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:text="Data Set"
+                android:textColor="@color/WText"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
 
