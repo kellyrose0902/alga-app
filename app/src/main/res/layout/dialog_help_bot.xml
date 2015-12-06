@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/bot_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6">
+
+                    <ImageView
+                        android:id="@+id/bot_indent1"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="40dp"
+                        android:paddingBottom="5dp"
+                        android:src="@drawable/dialog_indent" />
+
+                    <edu.uwp.alga.utils.LabelTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/bot_indent1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="25dp"
+                        android:text="You will need :"
+                        android:textColor="@color/WText"
+                        android:textSize="23sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/bot_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/bot_indent1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp">
+
+                        <edu.uwp.alga.utils.BoldTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"
+                            android:text="Tie a THERMORMETER
+with a ROPE"
+                            android:textColor="@color/WText"
+
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/bot_indent1b"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_below="@+id/bot_line2"
+                        android:layout_marginTop="30dp"
+                        android:paddingBottom="5dp"
+
+                        android:src="@drawable/dialog_indent" />
+
+                    <edu.uwp.alga.utils.LabelTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/bot_indent1b"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="25dp"
+                        android:text="How to use :"
+                        android:textColor="@color/WText"
+                        android:textSize="23sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="30dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:src="@drawable/dialog_thermo_vertical" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/bot_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bot_line1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Put the thermometer into water and slowly lower it down"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/bot_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bot_text1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Wait for some time and then the lift
+the rope up and record the temperature "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/bot_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bot_text2"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/dialog_bottemp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_below="@+id/bot_image" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

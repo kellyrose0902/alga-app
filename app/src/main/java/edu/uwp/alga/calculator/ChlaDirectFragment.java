@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,11 +42,12 @@ import edu.uwp.alga.utils.DataUtils;
 public class ChlaDirectFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    Button directButton;
     public View rootView;
+    Button directButton;
     EditText Totaltext;
     EditText Cyanotext;
     ImageView background;
+    ImageButton helpDirect;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
     public ChlaDirectFragment() {
@@ -81,6 +84,8 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         Cyanotext = (EditText)rootView.findViewById(R.id.direct_cyano);
         directButton = (Button)rootView.findViewById(R.id.submit_direct);
         directButton.setOnClickListener(this);
+        helpDirect = (ImageButton) rootView.findViewById(R.id.help_direct_chla);
+        helpDirect.setOnClickListener(this);
         background = (ImageView)rootView.findViewById(R.id.chla_direct_BG);
         background.setImageBitmap(getBackground());
         initializeValue();
@@ -169,6 +174,8 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
                 }
 
                 break;
+            case R.id.help_direct_chla:
+                showDialog("direct");
         }
     }
 
@@ -176,5 +183,12 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         editor.remove(DataUtils.EstimateSecchi);
         editor.remove(DataUtils.EstimateOxygen);
         editor.apply();
+    }
+
+    public void showDialog(String type) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm, "Fragment");
     }
 }

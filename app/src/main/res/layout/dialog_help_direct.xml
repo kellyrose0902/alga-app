@@ -20,7 +20,7 @@
             android:paddingRight="5dp">
 
             <ImageView
-                android:id="@+id/bot_indent1"
+                android:id="@+id/direct_indent1"
                 android:layout_width="10dp"
                 android:layout_height="15dp"
                 android:layout_alignParentTop="true"
@@ -31,7 +31,7 @@
             <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bot_indent1"
+                android:layout_alignBottom="@+id/direct_indent1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="25dp"
                 android:text="You will need :"
@@ -39,10 +39,10 @@
                 android:textSize="23sp" />
 
             <LinearLayout
-                android:id="@+id/bot_line1"
+                android:id="@+id/direct_line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_indent1"
+                android:layout_below="@+id/direct_indent1"
                 android:orientation="vertical">
 
 
@@ -93,10 +93,10 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/bot_indent1b"
+                android:id="@+id/direct_indent1b"
                 android:layout_width="10dp"
                 android:layout_height="15dp"
-                android:layout_below="@+id/bot_line1"
+                android:layout_below="@+id/direct_line1"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
 
@@ -105,7 +105,7 @@
             <edu.uwp.alga.utils.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/bot_indent1b"
+                android:layout_alignBottom="@+id/direct_indent1b"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="25dp"
                 android:text="How to use :"
@@ -113,10 +113,10 @@
                 android:textSize="23sp" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text1"
+                android:id="@+id/direct_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_indent1b"
+                android:layout_below="@+id/direct_indent1b"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -126,10 +126,10 @@
                 android:textSize="20sp" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text2"
+                android:id="@+id/direct_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text1"
+                android:layout_below="@+id/direct_text1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -139,10 +139,10 @@
                 android:textSize="20sp" />
 
             <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/bot_text3"
+                android:id="@+id/direct_text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text2"
+                android:layout_below="@+id/direct_text2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -152,10 +152,10 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/bot_image"
+                android:id="@+id/direct_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bot_text3"
+                android:layout_below="@+id/direct_text3"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -167,8 +167,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_below="@+id/bot_image" />
-
+                android:layout_below="@+id/direct_image" />
 
         </RelativeLayout>
 

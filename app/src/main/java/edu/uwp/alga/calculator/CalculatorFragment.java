@@ -52,6 +52,12 @@ import edu.uwp.alga.utils.DataUtils;
  * create an instance of this fragment.
  */
 public class CalculatorFragment extends Fragment implements View.OnClickListener, SensorEventListener{
+    /**
+     * The fragment argument representing the section number for this
+     * fragment. Static because it's shared across all instances of
+     * this fragment.
+     */
+    private static final String ARG_SECTION_NUMBER = "section_number";
     public View rootView;
     Button setChlbutton;
     Button setPObutton;
@@ -68,15 +74,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     ImageButton helpChla;
     Float lux;
     ImageView background;
-
     SensorManager sensorManager;
     Sensor lightSensor;
-    /**
-     * The fragment argument representing the section number for this
-     * fragment. Static because it's shared across all instances of
-     * this fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
 
@@ -245,30 +244,31 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
                 break;
             case R.id.help_po:
-                showDialog();
+                showDialog("");
                 break;
 
             case R.id.help_sur:
-                showDialog();
+                showDialog("surface_temp");
                 break;
             case R.id.help_bot:
-                showDialog();
+                showDialog("bottom_temp");
                 break;
             case R.id.help_depth:
-                showDialog();
+                showDialog("depth");
                 break;
             case R.id.help_lux:
-                showDialog();
+                showDialog("lux");
                 break;
             case R.id.help_chla:
-                showDialog();
+                showDialog("chla");
                 break;
         }
     }
 
-    public void showDialog(){
+    public void showDialog(String type){
         FragmentManager fm = getActivity().getSupportFragmentManager();
         HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
         helpFragmentDialog.show(fm,"Fragment");
     }
 
@@ -314,10 +314,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             return false;
         }
 
-        if(!DataInputLog.getBoolean(DataUtils.isSetPO,false)){
-            return false;
-        }
-        return true;
+        return DataInputLog.getBoolean(DataUtils.isSetPO, false);
     }
 
     public void saveData(){

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/line0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:text="Secchi depth is to determine the turbidity"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/secchi_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line0">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                    <ImageView
+                        android:id="@+id/secchi_indent1"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:src="@drawable/dialog_indent" />
+
+                    <edu.uwp.alga.utils.LabelTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/secchi_indent1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="25dp"
+                        android:text="You will need :"
+                        android:textColor="@color/WText"
+                        android:textSize="23sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/secchi_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/secchi_indent1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp">
+
+                        <edu.uwp.alga.utils.BoldTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"
+                            android:text="SECCHI DISK"
+                            android:textColor="@color/WText"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/secchi_line2">
+
+                        <edu.uwp.alga.utils.LabelTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"
+                            android:text="A gadget to measure
+water transparency"
+                            android:textColor="@color/WText"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+
+
+                    android:paddingLeft="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:src="@drawable/dialog_disk" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/secchi_indent1b"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/secchi_line1"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/dialog_indent" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/secchi_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="25dp"
+                android:text="How to use :"
+                android:textColor="@color/WText"
+                android:textSize="23sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/secchi_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secchi_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Put secchi disk slowly into the water
+until the disk is no longer visible"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/secchi_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secchi_text1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Measure the length of the line that is
+dipped into the water "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/secchi_text2"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/help_image1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dialog_secchi2" />
+
+                <ImageView
+                    android:id="@+id/help_image2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dialog_secchi1" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -47,6 +49,8 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
     ImageView background;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    ImageButton helpSecchi;
+    ImageButton helpOxygen;
     public ChlaEstimateFragment() {}
 
     /**
@@ -78,6 +82,10 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
 
         estimateButton = (Button)rootView.findViewById(R.id.submit_estimate);
         estimateButton.setOnClickListener(this);
+        helpSecchi = (ImageButton) rootView.findViewById(R.id.help_secchi);
+        helpSecchi.setOnClickListener(this);
+        helpOxygen = (ImageButton) rootView.findViewById(R.id.help_oxygen);
+        helpOxygen.setOnClickListener(this);
         Oxygentext = (EditText)rootView.findViewById(R.id.Oxygen_input);
         Sechitext = (EditText)rootView.findViewById(R.id.Secchi_input);
         initializeValue();
@@ -166,8 +174,12 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
                     startActivity(intent);
                 }
 
-
                 break;
+            case R.id.help_secchi:
+                showDialog("secchi");
+                break;
+            case R.id.help_oxygen:
+                showDialog("oxygen");
         }
     }
 
@@ -175,5 +187,12 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         editor.remove(DataUtils.DirectTotal);
         editor.remove(DataUtils.DirectCyano);
         editor.apply();
+    }
+
+    public void showDialog(String type) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm, "Fragment");
     }
 }
