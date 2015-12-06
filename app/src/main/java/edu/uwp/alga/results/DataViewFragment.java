@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -93,6 +94,8 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
         if (listDataHeader.size()==1){
             ChlaList.expandGroup(0);
         }
+
+        ChlaList.setOnGroupClickListener(groupClickListener());
 
         return rootView;
     }
@@ -250,7 +253,7 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
     }
 
-   /* public ExpandableListView.OnGroupClickListener groupClickListener() {
+    public ExpandableListView.OnGroupClickListener groupClickListener() {
         ExpandableListView.OnGroupClickListener listener = new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
@@ -258,11 +261,11 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
                 if (parent.isGroupExpanded(groupPosition)) {
                     indicator.setImageResource(R.drawable.group_collapsed);
                 } else indicator.setImageResource(R.drawable.group_indicator);
-                return true;
+                return false;
             }
         };
         return listener;
-    }*/
+    }
 
 
     public void getDataSet(View v){
@@ -283,9 +286,9 @@ public class DataViewFragment extends Fragment implements View.OnClickListener{
 
     public void showDialog(){
         FragmentManager fm = getActivity().getSupportFragmentManager();
-        DataSetDialog editNameDialog = new DataSetDialog();
-        editNameDialog.setData(totalDataHeader, totalData);
-        editNameDialog.show(fm,"Fragment");
+        DataSetDialog datasetDialog = new DataSetDialog();
+        datasetDialog.setData(totalDataHeader, totalData);
+        datasetDialog.show(fm,"Fragment");
     }
 
 }

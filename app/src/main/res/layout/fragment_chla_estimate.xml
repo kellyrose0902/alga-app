@@ -17,14 +17,15 @@
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WBackground">
+    android:background="@color/WBackground"
+    android:orientation="vertical">
     <!-- TODO: Extract hard coded String to String values -->
     <ImageView
+        android:id="@+id/chla_estimate_BG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/background"
         android:scaleType="fitXY"
 
         />
@@ -33,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,38 +43,40 @@
             android:orientation="horizontal">
 
             <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/lable_secci"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:textSize="@dimen/text_medium"
-                android:textColor="@color/WText"
                 android:padding="8dp"
                 android:text="Secci Depth"
-                android:id="@+id/lable_secci" />
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
             <EditText
+                android:id="@+id/Secchi_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="m"
+                android:layout_weight="2"
                 android:background="@color/WText"
-                android:gravity="center"
                 android:ems="10"
+                android:gravity="center"
+                android:hint="m"
+                android:inputType="numberDecimal"
                 android:padding="8dp"
-                android:id="@+id/Secchi_input"
-                android:layout_weight="2" />
+                android:textCursorDrawable="@color/WBackground" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageButton
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/help_secchi"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:src="@drawable/question"
                     android:scaleType="centerInside"
-                    android:layout_weight="1"/>
+                    android:src="@drawable/question_state" />
             </LinearLayout>
 
         </LinearLayout>
@@ -81,43 +84,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:layout_centerInParent="true">
+            android:orientation="horizontal">
 
             <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/label_oxygen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:padding="8dp"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium"
                 android:text="Dissovled Oxygen"
-                android:id="@+id/label_oxygen" />
+                android:textColor="@color/WText"
+                android:textSize="@dimen/text_medium" />
 
             <EditText
+                android:id="@+id/Oxygen_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:layout_weight="2"
                 android:background="@color/WText"
-                android:hint="%"
-                android:padding="8dp"
-                android:gravity="center"
                 android:ems="10"
-                android:id="@+id/Oxygen_input"
-                android:layout_weight="2" />
+                android:gravity="center"
+                android:hint="%"
+                android:inputType="numberDecimal"
+                android:padding="8dp"
+                android:textCursorDrawable="@color/WBackground" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageButton
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/help_oxygen"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:src="@drawable/question"
                     android:scaleType="centerInside"
-                    android:layout_weight="1"/>
+                    android:src="@drawable/question_state" />
             </LinearLayout>
 
         </LinearLayout>
@@ -126,16 +131,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp">
             <Button
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-
-                android:background="@drawable/submit_state"
-                android:src="@drawable/submit_button"
                 android:id="@+id/submit_estimate"
+                android:layout_width="150dp"
+
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
 
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:background="@drawable/submit_state"
+                android:src="@drawable/submit_button" />
         </RelativeLayout>
 
     </LinearLayout>

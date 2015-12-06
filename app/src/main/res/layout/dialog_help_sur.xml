@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:id="@+id/sur_indent1"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="40dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/dialog_indent" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/sur_indent1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="25dp"
+
+                android:text="You will need :"
+                android:textColor="@color/WText"
+                android:textSize="23sp" />
+
+            <LinearLayout
+                android:id="@+id/sur_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_indent1">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="4">
+
+                    <edu.uwp.alga.utils.BoldTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="THERMOMETER"
+                        android:textColor="@color/WText"
+
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="3"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:src="@drawable/dialog_thermometer" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/sur_indent1b"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/sur_line1"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+
+                android:src="@drawable/dialog_indent" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/sur_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="25dp"
+                android:text="How to use :"
+                android:textColor="@color/WText"
+                android:textSize="23sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Place the bulb of the thermometer
+under water, at a depth of about 15-20 cm"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Wait a short time until the column comes
+to a standstill "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/sur_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="3. Without lifting the thermometer out
+of the water, read the temperature  "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/sur_image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sur_text3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/dialog_surtemp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_below="@+id/sur_image1" />
+        </RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

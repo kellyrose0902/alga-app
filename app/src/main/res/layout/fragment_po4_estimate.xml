@@ -10,12 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/background" />
+        android:id="@+id/po4_estimate_BG"/>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,6 +41,7 @@
                     android:textSize="20sp" />
 
                 <edu.uwp.alga.utils.BoldTextView
+                    android:id="@+id/po4_estimate_val"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -158,12 +160,14 @@
                 android:textSize="20sp" />
 
             <SeekBar
+                android:id="@+id/plant_seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="5dp"
                 android:minHeight="5dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:max = "100"
                 android:progressDrawable="@drawable/seek_progress"
                 android:thumb="@drawable/thumb_small" />
 
@@ -198,12 +202,14 @@
                 android:textSize="20sp" />
 
             <SeekBar
+                android:id="@+id/bloom_seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="5dp"
                 android:minHeight="5dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:max="100"
                 android:progressDrawable="@drawable/seek_progress"
                 android:thumb="@drawable/thumb_small" />
 
@@ -232,7 +238,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="120dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/lux_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/lux_text1"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/lux_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lux_line1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="For best accuracy, user should measure the lux value directly by a Lux Meter and enter the value in "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/lux_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lux_line2"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/dialog_luxmeter" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/lux_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lux_image"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/lux_text_note"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

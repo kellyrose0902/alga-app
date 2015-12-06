@@ -3,9 +3,9 @@ package edu.uwp.alga.results;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +24,10 @@ import edu.uwp.alga.utils.DataUtils;
 import edu.uwp.alga.utils.ResultUtils;
 
 public class GraphViewFragment extends Fragment {
-    LineChart chart;
     private static final String ARG_SECTION_NUMBER = "section_number";
-    SharedPreferences DataInputLog;
     public Context context;
+    LineChart chart;
+    SharedPreferences DataInputLog;
     SharedPreferences Logfile;
     Float maxYAxisValue = 40f;
 
@@ -130,7 +130,7 @@ public class GraphViewFragment extends Fragment {
         //float cyano = 9f;
 
 
-        LineData lineData = new LineData(ResultUtils.getXAxisValues(), ResultUtils.getDataSet(totalDataSet, cyanoDataSet));
+        LineData lineData = new LineData(ResultUtils.getXAxisValues(), ResultUtils.getDataSet(context, totalDataSet, cyanoDataSet));
         chart.setData(lineData);
         YAxis yAxis = chart.getAxisLeft();
         if (maxYAxisValue < 40f){
@@ -140,9 +140,10 @@ public class GraphViewFragment extends Fragment {
 
         YAxis yAxis1 = chart.getAxisRight();
         LimitLine ll = new LimitLine(40f, "WHO Risk Limit for HAB: 40 µg");
-        ll.setLineWidth(3f);
+        ll.setLineWidth(5f);
         ll.setTextSize(10f);
-        ll.setTextColor(Color.RED);
+        ll.setTextColor(ContextCompat.getColor(context, R.color.WgraphLimit));
+        ll.setLineColor(ContextCompat.getColor(context, R.color.WgraphLimit));
         yAxis.addLimitLine(ll);
         yAxis1.setEnabled(false);
         chart.setDescription("My Chart");
@@ -152,6 +153,7 @@ public class GraphViewFragment extends Fragment {
 
         chart.animateXY(2000, 2000);
         chart.invalidate();
+        chart.setGridBackgroundColor(ContextCompat.getColor(context, R.color.WgraphBG));
     }
 
 

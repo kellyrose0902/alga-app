@@ -26,20 +26,22 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import edu.uwp.alga.ChlaActivity;
 import edu.uwp.alga.Po4Activity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.SubmitActivity;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,25 +52,30 @@ import edu.uwp.alga.utils.DataUtils;
  * create an instance of this fragment.
  */
 public class CalculatorFragment extends Fragment implements View.OnClickListener, SensorEventListener{
-    public View rootView;
-    Button setChlbutton;
-    Button setPObutton;
-    Button submitData;
-    EditText POtext;
-    EditText TempSurtext;
-    EditText TempBottext;
-    EditText Depthtext;
-    EditText LuxText;
-    Float lux;
-
-    SensorManager sensorManager;
-    Sensor lightSensor;
     /**
      * The fragment argument representing the section number for this
      * fragment. Static because it's shared across all instances of
      * this fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+    public View rootView;
+    Button setChlbutton;
+    Button setPObutton;
+    Button submitData;
+    EditText TempSurtext;
+    EditText TempBottext;
+    EditText Depthtext;
+    EditText LuxText;
+    ImageButton helpPO;
+    ImageButton helpSur;
+    ImageButton helpBot;
+    ImageButton helpLux;
+    ImageButton helpDepth;
+    ImageButton helpChla;
+    Float lux;
+    ImageView background;
+    SensorManager sensorManager;
+    Sensor lightSensor;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
 
@@ -103,10 +110,15 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         Context context = getActivity();
         getLux();
 
+        background = (ImageView)rootView.findViewById(R.id.calculatorBG);
+
+
         //Manage data resource to save log and current input
         stateData = PreferenceManager.getDefaultSharedPreferences(context);
         dataPtr = stateData.getInt(DataUtils.current, 0);
         SaveLog = context.getSharedPreferences(DataUtils.DataLog + String.valueOf(dataPtr), Context.MODE_PRIVATE);
+
+
 
 
         getLux();
@@ -146,18 +158,39 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             setPObutton.setText(context.getResources().getString(R.string.tick));
 
         }
+
+        helpPO = (ImageButton)rootView.findViewById(R.id.help_po);
+        helpPO.setOnClickListener(this);
+
+        helpSur = (ImageButton)rootView.findViewById(R.id.help_sur);
+        helpSur.setOnClickListener(this);
+
+        helpBot = (ImageButton)rootView.findViewById(R.id.help_bot);
+        helpBot.setOnClickListener(this);
+
+        helpDepth = (ImageButton)rootView.findViewById(R.id.help_depth);
+        helpDepth.setOnClickListener(this);
+
+        helpLux = (ImageButton)rootView.findViewById(R.id.help_lux);
+        helpLux.setOnClickListener(this);
+
+        helpChla = (ImageButton)rootView.findViewById(R.id.help_chla);
+        helpChla.setOnClickListener(this);
     }
 
     private void initializeValue(){
 
             if(DataInputLog.contains(DataUtils.TempSurface)){
                 TempSurtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempSurface,0f)));
+                TempSurtext.setSelection(TempSurtext.getText().length());
             }
             if(DataInputLog.contains(DataUtils.TempBottom)){
                 TempBottext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.TempBottom,0f)));
+                TempBottext.setSelection(TempBottext.getText().length());
             }
             if (DataInputLog.contains(DataUtils.LakeDepth)){
                 Depthtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.LakeDepth, 0f)));
+                Depthtext.setSelection(Depthtext.getText().length());
             }
         }
 
@@ -171,7 +204,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             lux = 12000f;
             Log.e("Light", String.valueOf(lux));
         } else {
-            sensorManager.registerListener(this,lightSensor,SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
 
@@ -205,14 +238,38 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                     startActivity(intentData);
                 }
                 else {
-                    Toast.makeText(getActivity(),"Please input more data",Toast.LENGTH_SHORT).show();
+                    HelpUtils.makeToast(getActivity(), "Please input more data");
                 }
                 //test clear
 
                 break;
+            case R.id.help_po:
+                showDialog("po");
+                break;
 
-
+            case R.id.help_sur:
+                showDialog("surface_temp");
+                break;
+            case R.id.help_bot:
+                showDialog("bottom_temp");
+                break;
+            case R.id.help_depth:
+                showDialog("depth");
+                break;
+            case R.id.help_lux:
+                showDialog("lux");
+                break;
+            case R.id.help_chla:
+                showDialog("chla");
+                break;
         }
+    }
+
+    public void showDialog(String type){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm,"Fragment");
     }
 
     public boolean checkInput(){
@@ -220,47 +277,39 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             return false;
         }
         else{
-           /* Float value;
-            value = Float.valueOf(POtext.getText().toString());
-            if (value<0.0001 || value>7){
-                Toast.makeText(getActivity(),"Please input PO4 concentation between 0.0001 and 7",Toast.LENGTH_SHORT).show();
-                return false;
-            }*/
+
             Float value;
 
             value = Float.valueOf(TempSurtext.getText().toString());
             Float surtempVal = value;
             if (value<0 || value>40){
-                Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
                 return false;
             }
             value = Float.valueOf(TempBottext.getText().toString());
             Float bottempVal = value;
             if (value<0 || value>40){
-                Toast.makeText(getActivity(),"Please input Surface between 0 and 40",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
                 return false;
             }
 
             if(bottempVal>surtempVal){
-                Toast.makeText(getActivity(),"Bottom temperature cannot be greater that surface temperature",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Bottom temperature cannot be greater that surface temperature");
                 return false;
             }
 
             value = Float.valueOf(Depthtext.getText().toString());
             if (value<=0 || value>5){
-                Toast.makeText(getActivity(),"Algal bloom will not happen if lake depth > 5",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Algal bloom will not happen if lake depth > 5");
                 return false;
             }
         }
         if (!DataInputLog.getBoolean(DataUtils.isSetChla,false)){
-            Toast.makeText(getActivity(),"Please set value for Chla",Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Please set value for Chla");
             return false;
         }
 
-        if(!DataInputLog.getBoolean(DataUtils.isSetPO,false)){
-            return false;
-        }
-        return true;
+        return DataInputLog.getBoolean(DataUtils.isSetPO, false);
     }
 
     public void saveData(){

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/do_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        android:id="@+id/do_indent1"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:src="@drawable/dialog_indent" />
+
+                    <edu.uwp.alga.utils.LabelTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/do_indent1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="25dp"
+                        android:text="You will need :"
+                        android:textColor="@color/WText"
+                        android:textSize="23sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/do_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/do_indent1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp">
+
+                        <edu.uwp.alga.utils.BoldTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"
+                            android:text="Dissolved Oxygen Meter "
+                            android:textColor="@color/WText"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_weight="2">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:src="@drawable/dialog_dometer" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/do_indent1b"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_below="@+id/do_line1"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/dialog_indent" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/do_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="25dp"
+                android:text="How to use :"
+                android:textColor="@color/WText"
+                android:textSize="23sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/do_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/do_indent1b"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Collect a water sample from different depths "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/do_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/do_text1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Place the electrode into the sample container and gently stir "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/do_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/do_text2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="3. Once the display on the meter has settled on a number, this is your result "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/do_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/do_text3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/dialog_do" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

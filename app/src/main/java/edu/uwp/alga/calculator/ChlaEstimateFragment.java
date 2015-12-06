@@ -19,19 +19,25 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 public class ChlaEstimateFragment extends Fragment implements View.OnClickListener {
 
@@ -40,8 +46,11 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
     Button estimateButton;
     EditText Sechitext;
     EditText Oxygentext;
+    ImageView background;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    ImageButton helpSecchi;
+    ImageButton helpOxygen;
     public ChlaEstimateFragment() {}
 
     /**
@@ -73,31 +82,52 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
 
         estimateButton = (Button)rootView.findViewById(R.id.submit_estimate);
         estimateButton.setOnClickListener(this);
+        helpSecchi = (ImageButton) rootView.findViewById(R.id.help_secchi);
+        helpSecchi.setOnClickListener(this);
+        helpOxygen = (ImageButton) rootView.findViewById(R.id.help_oxygen);
+        helpOxygen.setOnClickListener(this);
         Oxygentext = (EditText)rootView.findViewById(R.id.Oxygen_input);
         Sechitext = (EditText)rootView.findViewById(R.id.Secchi_input);
         initializeValue();
+        background = (ImageView)rootView.findViewById(R.id.chla_estimate_BG);
+        background.setImageBitmap(getBackground());
         return rootView;
     }
     public void initializeValue(){
         if(DataInputLog.contains(DataUtils.EstimateOxygen)){
             Oxygentext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.EstimateOxygen, 0f)));
+            Oxygentext.setSelection(Oxygentext.getText().length());
         }
 
         if(DataInputLog.contains(DataUtils.EstimateSecchi)){
             Sechitext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.EstimateSecchi, 0f)));
+            Sechitext.setSelection(Sechitext.getText().length());
         }
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     //Sanitize data, check if enough fields have been input
     public boolean checkInput(){
         if(!(DataUtils.hasValue(Sechitext))){
-            Toast.makeText(getActivity(), "Please input secchi depth", Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Please input secchi depth");
             return false;
         }
         else {
             Float value = Float.valueOf(Sechitext.getText().toString());
             if (value <= 0 || value > 1) {
-                Toast.makeText(getActivity(), "Please input Secchi Depth value between 0 and 1", Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Secchi Depth value between 0 and 1");
                 return false;
             }
         }
@@ -105,7 +135,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         if(DataUtils.hasValue(Oxygentext)) {
             Float value = Float.valueOf(Oxygentext.getText().toString());
             if (value < 1 || value > 100) {
-                Toast.makeText(getActivity(), "Please input Oxygen Dissolved value between 1 and 100", Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input Oxygen Dissolved value between 1 and 100");
                 return false;
             }
         }
@@ -144,8 +174,12 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
                     startActivity(intent);
                 }
 
-
                 break;
+            case R.id.help_secchi:
+                showDialog("secchi");
+                break;
+            case R.id.help_oxygen:
+                showDialog("oxygen");
         }
     }
 
@@ -153,5 +187,12 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         editor.remove(DataUtils.DirectTotal);
         editor.remove(DataUtils.DirectCyano);
         editor.apply();
+    }
+
+    public void showDialog(String type) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm, "Fragment");
     }
 }

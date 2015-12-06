@@ -45,4 +45,8 @@
     <string name="PO_vegetation_text">Type of vegetation near the shore:</string>
     <string name="PO_plant_text">Quantity of plant in the lake:</string>
     <string name="PO_frequency_text">Frequency of algea bloom occurence:</string>
+
+    <!--Help text-->
+    <string name="lux_text1">Lux is the unit of luminance and luminous emittance, measuring luminous flux per unit area</string>
+    <string name="lux_text_note"><u>Note</u>: If leave blank, the lux value will be automatically estimated by the phone’s light sensor</string>
 </resources>

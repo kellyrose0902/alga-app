@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="5dp">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_line0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Phosphorus is an important nutrient element.Many important molecules within a cell contain Phosphorus. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/po_line0"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="ATP is an example of a molecule that uses phosphorus. ATP is essential to all living organisms since it is used for energy. However, too much phosphorus in a system could cause an algea bloom. So to predict algea bloom we need to measure the phosphate concentration at the bottom."
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+
+            <edu.uwp.alga.utils.BoldTextView
+                android:id="@+id/po_indent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/po_line1"
+                android:layout_marginTop="10dp"
+                android:text="Two options for inputting P04 concentration value:"
+                android:textColor="@color/WOrange"
+                android:textSize="20sp"
+
+                />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/po_indent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Directly input after measuring phosphate value by yourself"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/po_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/po_text1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Estimate phosphate concentration based on the condition of the examinizing lake "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package edu.uwp.alga.utils;
 
-import android.graphics.Color;
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.github.mikephil.charting.data.Entry;
@@ -8,12 +9,15 @@ import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
 
+import edu.uwp.alga.R;
+
 /**
  * Created by Kelly on 11/16/2015.
  */
 public class ResultUtils {
 
-    public static ArrayList<LineDataSet> getDataSet(ArrayList<Float> totalDataSet, ArrayList<Float>cyanoDataSet){
+
+    public static ArrayList<LineDataSet> getDataSet(Context context, ArrayList<Float> totalDataSet, ArrayList<Float> cyanoDataSet) {
 
         ArrayList<LineDataSet> dataSets = new ArrayList<>();
         if (totalDataSet!= null) {
@@ -26,10 +30,10 @@ public class ResultUtils {
                 valueSet1.add(value);
             }
             LineDataSet LineDataSet1 = new LineDataSet(valueSet1, "Total Chla");
-            LineDataSet1.setColor(Color.GREEN);
-            LineDataSet1.setColor(Color.GREEN);
-            LineDataSet1.setCircleColor(Color.GREEN);
-            LineDataSet1.setLineWidth(0f);
+            LineDataSet1.setColor(ContextCompat.getColor(context, R.color.WgraphTotal));
+            LineDataSet1.setDrawCircles(false);
+            LineDataSet1.setCircleColor(ContextCompat.getColor(context, R.color.WgraphTotal));
+            LineDataSet1.setLineWidth(5f);
             //LineDataSet1.setLineWidth(0.6f);
             //LineDataSet1.setCubicIntensity(0.05f);
 
@@ -45,6 +49,11 @@ public class ResultUtils {
                 valueSet2.add(value);
             }
             LineDataSet LineDataSet2 = new LineDataSet(valueSet2, "Cyano Chla");
+
+            LineDataSet2.setColor(ContextCompat.getColor(context, R.color.WgraphCyano));
+            LineDataSet2.setDrawCircles(false);
+            LineDataSet2.setCircleColor(ContextCompat.getColor(context, R.color.WgraphCyano));
+            LineDataSet2.setLineWidth(5f);
             dataSets.add(LineDataSet2);
         }
 

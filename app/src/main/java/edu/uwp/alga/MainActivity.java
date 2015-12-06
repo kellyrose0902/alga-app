@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
        // setToolbar();
         setFragmentPagers();
         setTabLayout();
@@ -121,4 +122,22 @@ public class MainActivity extends AppCompatActivity {
         // Make it swipeable, otherwise they will be squished together.
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(mViewPager.getCurrentItem()==0){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+            startActivity(intent);
+            finish();
+            System.exit(0);
+        }
+
+
+    }
+
+
+
 }

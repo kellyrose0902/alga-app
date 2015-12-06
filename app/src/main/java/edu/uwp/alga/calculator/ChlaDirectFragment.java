@@ -19,27 +19,35 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 public class ChlaDirectFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    Button directButton;
     public View rootView;
+    Button directButton;
     EditText Totaltext;
     EditText Cyanotext;
+    ImageView background;
+    ImageButton helpDirect;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
     public ChlaDirectFragment() {
@@ -76,37 +84,56 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         Cyanotext = (EditText)rootView.findViewById(R.id.direct_cyano);
         directButton = (Button)rootView.findViewById(R.id.submit_direct);
         directButton.setOnClickListener(this);
+        helpDirect = (ImageButton) rootView.findViewById(R.id.help_direct_chla);
+        helpDirect.setOnClickListener(this);
+        background = (ImageView)rootView.findViewById(R.id.chla_direct_BG);
+        background.setImageBitmap(getBackground());
         initializeValue();
         return rootView;
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background", String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     private void initializeValue() {
         if(DataInputLog.contains(DataUtils.DirectTotal)){
             Totaltext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectTotal, 0f)));
+            Totaltext.setSelection(Totaltext.getText().length());
         }
 
         if(DataInputLog.contains(DataUtils.DirectCyano)){
             Cyanotext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.DirectCyano, 0f)));
+            Cyanotext.setSelection(Cyanotext.getText().length());
         }
     }
 
 
     public boolean checkInput(){
         if(!(DataUtils.hasValue(Totaltext)||DataUtils.hasValue(Cyanotext))){
-            Toast.makeText(getActivity(),"Input at least 1 field",Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "Input at least 1 field");
             return false;
         }
         if(DataUtils.hasValue(Totaltext)){
             Float value = Float.valueOf(Totaltext.getText().toString());
             if (value < 0 || value > 300){
-                Toast.makeText(getActivity(),"Please input Total Chl a value between 0 and 300",Toast.LENGTH_SHORT);
+                HelpUtils.makeToast(getActivity(), "Please input Total Chl a value between 0 and 300");
                 return false;
             }
         }
         if(DataUtils.hasValue(Cyanotext)) {
             Float value = Float.valueOf(Cyanotext.getText().toString());
             if (value < 0 || value > 300) {
-                Toast.makeText(getActivity(), "Please input Cyano Chl a value between 0 and 300", Toast.LENGTH_SHORT);
+                HelpUtils.makeToast(getActivity(), "Please input Cyano Chl a value between 0 and 300");
                 return false;
             }
         }
@@ -147,6 +174,8 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
                 }
 
                 break;
+            case R.id.help_direct_chla:
+                showDialog("direct");
         }
     }
 
@@ -154,5 +183,12 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         editor.remove(DataUtils.EstimateSecchi);
         editor.remove(DataUtils.EstimateOxygen);
         editor.apply();
+    }
+
+    public void showDialog(String type) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm, "Fragment");
     }
 }

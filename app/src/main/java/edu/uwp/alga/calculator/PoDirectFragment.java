@@ -3,19 +3,24 @@ package edu.uwp.alga.calculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import edu.uwp.alga.MainActivity;
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
+import edu.uwp.alga.utils.HelpUtils;
 
 /**
  * Created by Francisco on 11/25/2015.
@@ -24,11 +29,13 @@ import edu.uwp.alga.utils.DataUtils;
 public class PoDirectFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    Button directButton;
     public View rootView;
+    Button directButton;
     EditText po4DirectTotal;
+    ImageView helpDirectPO;
     SharedPreferences DataInputLog;
     SharedPreferences.Editor editor;
+    ImageView background;
     public PoDirectFragment() {
     }
 
@@ -60,29 +67,48 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
         editor = DataInputLog.edit();
 
         po4DirectTotal = (EditText) rootView.findViewById(R.id.po4_direct_total);
-
         directButton = (Button) rootView.findViewById(R.id.po4_submit_direct);
         directButton.setOnClickListener(this);
+
+        helpDirectPO = (ImageView) rootView.findViewById(R.id.help_po_direct);
+        helpDirectPO.setOnClickListener(this);
+        background = (ImageView)rootView.findViewById(R.id.po4_direct_BG);
+        background.setImageBitmap(getBackground());
         initializeValue();
         return rootView;
     }
+    private Bitmap getBackground(){
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        Log.e("Background",String.valueOf(bitmap.getWidth()));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+        Log.e("Background", String.valueOf(bitmap.getWidth()));
+
+        return bitmap;
+    }
     private void initializeValue() {
         if(DataInputLog.contains(DataUtils.PO)){
             po4DirectTotal.setText(String.valueOf(DataInputLog.getFloat(DataUtils.PO, 0f)));
+            po4DirectTotal.setSelection(po4DirectTotal.getText().length());
         }
     }
 
 
     public boolean checkInput(){
         if(!(DataUtils.hasValue(po4DirectTotal))) {
-            Toast.makeText(getActivity(), "You did not enter any value.", Toast.LENGTH_SHORT).show();
+            HelpUtils.makeToast(getActivity(), "You did not enter any value");
             return false;
         }else {
             Float value;
             value = Float.valueOf(po4DirectTotal.getText().toString());
             if (value<0.0001 || value>7){
-                Toast.makeText(getActivity(),"Please input PO4 concentation between 0.0001 and 7",Toast.LENGTH_SHORT).show();
+                HelpUtils.makeToast(getActivity(), "Please input PO4 concentation between 0.0001 and 7");
+
                 return false;
         }
 
@@ -122,7 +148,17 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
                 }
 
                 break;
+            case R.id.help_po_direct:
+                showDialog("po_direct");
+                break;
         }
+    }
+
+    public void showDialog(String type) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        HelpFragmentDialog helpFragmentDialog = new HelpFragmentDialog();
+        helpFragmentDialog.setType(type);
+        helpFragmentDialog.show(fm, "Fragment");
     }
 
 

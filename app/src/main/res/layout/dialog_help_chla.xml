@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@drawable/scrollbar_style">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="10dp">
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_line0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Chlorophyll is the green pigment in plants that allows them to create energy from light to photosynthesize. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_line0"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="By measuring chlorophyll, you are indirectly measuring the amount of photosynthesizing plants found in a sample. In a lake water sample, these plants would be algae or phytoplankton."
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/chla_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_line1"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dialog_chla" />
+            </LinearLayout>
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_image"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Chlorophyll a is a measure of the portion of the pigment that is still active; that is, the portion that was still actively respiring and photosynthesizing at the time of sampling."
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_line2"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Therefore, the amount of Chlorophyll a in a water sample can determine the amounts of algae and cyanobacteria in the water source. "
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+
+            <edu.uwp.alga.utils.BoldTextView
+                android:id="@+id/chla_indent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_line3"
+                android:layout_marginTop="10dp"
+                android:text="There are 2 ways to input Chl a values:"
+                android:textColor="@color/WOrange"
+                android:textSize="20sp"
+
+                />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_indent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="4dp"
+                android:text="1. Directly input after measuring Chl a value by yourself"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+
+            <edu.uwp.alga.utils.LabelTextView
+                android:id="@+id/chla_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chla_text1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="2. Estimate Chl a value based on the measurement of Secchi Depth and Dissolved Oxygen"
+                android:textColor="@color/WText"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>
