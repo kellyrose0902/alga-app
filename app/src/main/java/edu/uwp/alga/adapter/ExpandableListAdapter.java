@@ -1,4 +1,4 @@
-package edu.uwp.alga.utils;
+package edu.uwp.alga.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,33 +7,33 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
 import edu.uwp.alga.R;
 
 /**
- * Created by Kelly on 11/27/2015.
+ * Created by Kelly on 11/18/2015.
  */
-public class DataSetAdapter extends BaseExpandableListAdapter {
-    public static DecimalFormat df = new DecimalFormat("#.00");
-    public List<String> dataHeader; // header titles
-    // child data in format of header title, child title
-    public HashMap<String, List<Float>> dataChild;
+public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
-
-    public DataSetAdapter(Context context, List<String> listDataHeader,
-                          HashMap<String, List<Float>> listChildData) {
-
+    public List<Item> listDataHeader; // header titles
+    // child data in format of header title, child title
+    public HashMap<Item, List<Item>> listDataChild;
+    public static class Item{
+        public String title;
+        public String value;
+    }
+    public ExpandableListAdapter(Context context, List<Item> listDataHeader,
+                                 HashMap<Item, List<Item>> listChildData) {
         this.context = context;
-        this.dataHeader = listDataHeader;
-        this.dataChild = listChildData;
+        this.listDataHeader = listDataHeader;
+        this.listDataChild = listChildData;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return dataChild.get(this.dataHeader.get(groupPosition))
+        return listDataChild.get(this.listDataHeader.get(groupPosition))
                 .get(childPosititon);
     }
 
@@ -46,36 +46,35 @@ public class DataSetAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
+        final Item childItem = (Item) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.dialog_item, null);
+            convertView = infalInflater.inflate(R.layout.expand_item, null);
         }
-        TextView value = (TextView) convertView.findViewById(R.id.setValue);
-        value.setText(df.format((dataChild.get(dataHeader.get(groupPosition))).get(childPosition)));
 
-        TextView index = (TextView) convertView.findViewById(R.id.setIndex);
-        String indexValue = String.valueOf(childPosition * 24);
-        index.setText("[ " + indexValue + " ]");
-
+        TextView childTitle = (TextView)convertView.findViewById(R.id.item_title);
+        TextView childValue = (TextView)convertView.findViewById(R.id.item_content);
+        childTitle.setText(childItem.title);
+        childValue.setText(childItem.value);
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.dataChild.get(dataHeader.get(groupPosition)).size();
+        return this.listDataChild.get(listDataHeader.get(groupPosition)).size();
         //return 4;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return dataHeader.get(groupPosition);
+        return listDataHeader.get(groupPosition);
     }
 
     @Override
     public int getGroupCount() {
-        return dataHeader.size();
+        return listDataHeader.size();
     }
 
     @Override
@@ -86,14 +85,18 @@ public class DataSetAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-
+        Item GroupItem = (Item) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.dialog_header, null);
+            convertView = infalInflater.inflate(R.layout.expand_group, null);
         }
-        TextView header = (TextView) convertView.findViewById(R.id.setHeader);
-        header.setText(dataHeader.get(groupPosition));
+
+        TextView groupTitle = (TextView)convertView.findViewById(R.id.group_title);
+        TextView groupValue = (TextView)convertView.findViewById(R.id.group_content);
+
+        groupTitle.setText(GroupItem.title);
+        groupValue.setText(GroupItem.value);
 
         return convertView;
     }
@@ -108,3 +111,4 @@ public class DataSetAdapter extends BaseExpandableListAdapter {
         return true;
     }
 }
+

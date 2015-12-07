@@ -29,7 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.uwp.alga.settings.PreferencesActivity;
-import edu.uwp.alga.utils.SectionsPagerAdapter;
+import edu.uwp.alga.adapter.SectionsPagerAdapter;
 import edu.uwp.alga.utils.SnackbarFactory;
 
 public class MainActivity extends AppCompatActivity {

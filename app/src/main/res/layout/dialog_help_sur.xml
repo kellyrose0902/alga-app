@@ -46,19 +46,22 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
+
                     android:layout_marginTop="20dp"
-                    android:layout_weight="4">
+                    android:layout_weight="5">
 
                     <edu.uwp.alga.utils.BoldTextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20sp"
                         android:gravity="center"
                         android:text="THERMOMETER"
+                        android:textStyle="bold"
                         android:textColor="@color/WText"
 
-                        android:textSize="20sp" />
+                         />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -71,6 +74,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/dialog_thermometer" />
                 </LinearLayout>
 

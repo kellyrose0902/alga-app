@@ -21,7 +21,7 @@ import java.util.List;
 
 import edu.uwp.alga.R;
 import edu.uwp.alga.utils.DataUtils;
-import edu.uwp.alga.utils.ExpandableListAdapter;
+import edu.uwp.alga.adapter.ExpandableListAdapter;
 
 public class DataViewFragment extends Fragment implements View.OnClickListener{
     private static final String ARG_SECTION_NUMBER = "section_number";

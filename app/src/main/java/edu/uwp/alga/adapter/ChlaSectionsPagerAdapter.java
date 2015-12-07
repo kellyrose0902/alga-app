@@ -1,4 +1,4 @@
-package edu.uwp.alga.utils;
+package edu.uwp.alga.adapter;
 
 /**
  * Copyright 2015 UW-Parkside, Harleen Kaur, Hanh Le, Francisco Mateo
@@ -19,20 +19,20 @@ package edu.uwp.alga.utils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import edu.uwp.alga.Data.DataLogFragment;
-import edu.uwp.alga.calculator.CalculatorFragment;
+import edu.uwp.alga.calculator.ChlaDirectFragment;
+import edu.uwp.alga.calculator.ChlaEstimateFragment;
+import edu.uwp.alga.utils.PlaceholderFragment;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class ChlaSectionsPagerAdapter extends FragmentPagerAdapter {
 
     /**
      * {@inheritDoc}
      */
-    public SectionsPagerAdapter(FragmentManager fm) {
+    public ChlaSectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -46,12 +46,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return CalculatorFragment.newInstance(position + 1);
-
+                return ChlaDirectFragment.create(position++);
             case 1:
-                return DataLogFragment.create(position + 1);
+                return ChlaEstimateFragment.create(position++);
             default:
-                return PlaceholderFragment.newInstance(position + 1);
+                return PlaceholderFragment.newInstance(position++);
         }
     }
 
@@ -71,11 +70,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Calculate";
+                return "Direct";
             case 1:
-                return "Datalog";
-
-
+                return "Estimate";
         }
         return null;
     }

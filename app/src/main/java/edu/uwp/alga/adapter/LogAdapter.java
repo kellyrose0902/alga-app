@@ -1,4 +1,4 @@
-package edu.uwp.alga.utils;
+package edu.uwp.alga.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

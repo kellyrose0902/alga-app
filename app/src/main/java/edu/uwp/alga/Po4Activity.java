@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 
-import edu.uwp.alga.utils.PoSectionsPagerAdapter;
+import edu.uwp.alga.adapter.PoSectionsPagerAdapter;
 
 /**
  * Created by Francisco on 11/25/2015.

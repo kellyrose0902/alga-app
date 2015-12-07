@@ -25,7 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import edu.uwp.alga.utils.ChlaSectionsPagerAdapter;
+import edu.uwp.alga.adapter.ChlaSectionsPagerAdapter;
 
 public class ChlaActivity extends AppCompatActivity {
 
