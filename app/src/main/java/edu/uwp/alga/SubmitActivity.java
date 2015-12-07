@@ -16,21 +16,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import edu.uwp.alga.NetworkManager.Installation;
 import edu.uwp.alga.NetworkManager.Networking;
 import edu.uwp.alga.utils.DataUtils;
 import edu.uwp.alga.utils.SubmitSectionsPagerAdapter;
 
 public class SubmitActivity extends AppCompatActivity {
 
+    SharedPreferences DataInputLog;
+    SharedPreferences.Editor editor2;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
     private SubmitSectionsPagerAdapter mSectionsPagerAdapter;
-    SharedPreferences DataInputLog;
-    SharedPreferences.Editor editor2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +37,16 @@ public class SubmitActivity extends AppCompatActivity {
         setFragmentPagers();
         setTabLayout();
         setToolbar();
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("newData", false)) {
+            if (isNetworkAvailable()) new Networking.UploadDataTask().execute(this);
+        }
 
-        if(isNetworkAvailable()) new Networking.UploadDataTask().execute(this);
 
         DataInputLog = getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
         editor2 = DataInputLog.edit();
-        Installation.id(this);
+
 
     }
 
