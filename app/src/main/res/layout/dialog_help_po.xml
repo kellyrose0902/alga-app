@@ -27,7 +27,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
                 android:lineSpacingExtra="4dp"
-                android:text="Phosphorus is an important nutrient element.Many important molecules within a cell contain Phosphorus. "
+                android:text="Phosphorus is an important nutrient element. Many important molecules within a cell contain Phosphorus. "
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 

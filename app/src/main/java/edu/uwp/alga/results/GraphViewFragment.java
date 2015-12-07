@@ -146,7 +146,7 @@ public class GraphViewFragment extends Fragment {
         ll.setLineColor(ContextCompat.getColor(context, R.color.WgraphLimit));
         yAxis.addLimitLine(ll);
         yAxis1.setEnabled(false);
-        chart.setDescription("My Chart");
+        chart.setDescription("Algal Growth Prediction");
         ArrayList<LineDataSet> sets = (ArrayList<LineDataSet>) chart.getData()
                 .getDataSets();
 

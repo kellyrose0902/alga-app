@@ -3,8 +3,6 @@ package edu.uwp.alga.calculator;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +69,7 @@ public class HelpFragmentDialog extends DialogFragment {
     {
 
         super.onResume();
-        if (!help_type.equals("depth") && !help_type.equals("po")) {
+        /*if (!help_type.equals("depth") && !help_type.equals("po")) {
             DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
             int width = displayMetrics.widthPixels;
             int height = displayMetrics.heightPixels;
@@ -81,7 +79,7 @@ public class HelpFragmentDialog extends DialogFragment {
             //xDim=mainImage.getWidth();
             //yDim=mainImage.getHeight();
 
-        }
+        }*/
 
     }
 

@@ -58,6 +58,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
      * this fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private static final int RECORD_NUMBER = 10;
     public View rootView;
     Button setChlbutton;
     Button setPObutton;
@@ -192,6 +193,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 Depthtext.setText(String.valueOf(DataInputLog.getFloat(DataUtils.LakeDepth, 0f)));
                 Depthtext.setSelection(Depthtext.getText().length());
             }
+        if (DataInputLog.contains(DataUtils.lux)) {
+            LuxText.setText((String.valueOf(DataInputLog.getFloat(DataUtils.lux, 12000))));
+            LuxText.setSelection(LuxText.getText().length());
+        }
         }
 
     public void getLux() {
@@ -228,13 +233,18 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 if (checkInput()){
 
                     saveData();
+                    if (!DataUtils.hasValue(LuxText)) {
+                        editor.putFloat(DataUtils.lux, lux);
+                    }
                     DataUtils.saveLog(getActivity(),DataUtils.mPreference,DataUtils.DataLog+String.valueOf(dataPtr));
 
                     dataPtr = dataPtr + 1; // increment log pointer
-                    if(dataPtr == 10) dataPtr = 0; // reset log to store only 10 logs => change this to achieve more
-                    Log.e("Pointer",String.valueOf(dataPtr));
+                    if (dataPtr == RECORD_NUMBER)
+                        dataPtr = 0; // reset log to store only 10 logs => change this to achieve more
+                    Log.e("Pointer", String.valueOf(dataPtr));
                     stateData.edit().putInt(DataUtils.current,dataPtr).apply();
                     Intent intentData = new Intent(getActivity(), SubmitActivity.class);
+                    intentData.putExtra("newData", true);
                     startActivity(intentData);
                 }
                 else {
@@ -326,9 +336,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         if(DataUtils.hasValue(LuxText)){
             editor.putFloat(DataUtils.lux,Float.valueOf(LuxText.getText().toString()));
         }
-        else {
-            editor.putFloat(DataUtils.lux, lux);
-        }
+
         editor.apply();
     }
 
