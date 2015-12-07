@@ -1,4 +1,4 @@
-package edu.uwp.alga.utils;
+package edu.uwp.alga.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import edu.uwp.alga.results.DataViewFragment;
 import edu.uwp.alga.results.GraphViewFragment;
+import edu.uwp.alga.utils.PlaceholderFragment;
 
 public class SubmitSectionsPagerAdapter extends FragmentPagerAdapter {
 

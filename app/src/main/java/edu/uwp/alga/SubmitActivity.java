@@ -18,7 +18,7 @@ import android.view.View;
 
 import edu.uwp.alga.NetworkManager.Networking;
 import edu.uwp.alga.utils.DataUtils;
-import edu.uwp.alga.utils.SubmitSectionsPagerAdapter;
+import edu.uwp.alga.adapter.SubmitSectionsPagerAdapter;
 
 public class SubmitActivity extends AppCompatActivity {
 

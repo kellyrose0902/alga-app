@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.uwp.alga.R;
-import edu.uwp.alga.utils.DataSetAdapter;
+import edu.uwp.alga.adapter.DataSetAdapter;
 
 /**
  * Created by Kelly on 11/27/2015.

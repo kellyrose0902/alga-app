@@ -84,7 +84,7 @@
                     android:hint="µg/L"
                     android:inputType="numberDecimal"
                     android:padding="8dp"
-                    android:textCursorDrawable="@color/WBackground" />
+                    android:textCursorDrawable="@drawable/edit_cursor" />
 
                 <EditText
                     android:id="@+id/direct_cyano"
@@ -97,7 +97,7 @@
                     android:hint="µg/L"
                     android:inputType="numberDecimal"
                     android:padding="8dp"
-                    android:textCursorDrawable="@color/WBackground" />
+                    android:textCursorDrawable="@drawable/edit_cursor" />
 
             </LinearLayout>
             <LinearLayout

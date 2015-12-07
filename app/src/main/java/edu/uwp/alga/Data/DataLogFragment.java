@@ -37,7 +37,7 @@ import java.util.List;
 import edu.uwp.alga.R;
 import edu.uwp.alga.SubmitActivity;
 import edu.uwp.alga.utils.DataUtils;
-import edu.uwp.alga.utils.LogAdapter;
+import edu.uwp.alga.adapter.LogAdapter;
 
 public class DataLogFragment extends Fragment{
 
