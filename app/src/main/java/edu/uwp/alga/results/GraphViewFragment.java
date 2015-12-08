@@ -99,7 +99,7 @@ public class GraphViewFragment extends Fragment {
             myAlgalData = new AlgalDataCal(total, cyano, p04, surtemp, bottemp, depth, lux);
             if (total != -1) {
                 totalDataSet = myAlgalData.getTotalChlaDataSet();
-                
+
             }
             if (cyano != -1) {
                 cyanoDataSet = myAlgalData.getCyanoChlaDataSet();
