@@ -26,7 +26,7 @@ public class ResultUtils {
             for (int i = 0; i < totalDataSet.size(); i++) {
                 Entry value = new Entry(totalDataSet.get(i), i);
 
-                Log.d("Data", totalDataSet.get(i).toString());
+                Log.d("DataTotal", totalDataSet.get(i).toString());
                 valueSet1.add(value);
             }
             LineDataSet LineDataSet1 = new LineDataSet(valueSet1, "Total Chla");
@@ -44,8 +44,6 @@ public class ResultUtils {
             ArrayList<Entry> valueSet2 = new ArrayList<>();
             for (int i = 0; i < cyanoDataSet.size(); i++) {
                 Entry value = new Entry(cyanoDataSet.get(i), i);
-
-                Log.d("Data", cyanoDataSet.get(i).toString());
                 valueSet2.add(value);
             }
             LineDataSet LineDataSet2 = new LineDataSet(valueSet2, "Cyano Chla");

@@ -247,9 +247,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                     intentData.putExtra("newData", true);
                     startActivity(intentData);
                 }
-                else {
-                    HelpUtils.makeToast(getActivity(), "Please input more data");
-                }
+
                 //test clear
 
                 break;
@@ -284,6 +282,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     public boolean checkInput(){
         if (!DataUtils.hasValue(TempSurtext)||!DataUtils.hasValue(TempBottext)||!DataUtils.hasValue(Depthtext)){
+            HelpUtils.makeToast(getActivity(),"Please input more data");
             return false;
         }
         else{
@@ -319,7 +318,12 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             return false;
         }
 
-        return DataInputLog.getBoolean(DataUtils.isSetPO, false);
+        if (!DataInputLog.getBoolean(DataUtils.isSetPO, false)){
+            HelpUtils.makeToast(getActivity(), "Please set value for Chla");
+            return false;
+        }
+
+         return true;
     }
 
     public void saveData(){

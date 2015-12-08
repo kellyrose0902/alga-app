@@ -164,11 +164,11 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.submit_direct:
                 if(checkInput()){
+                    deletePreviousData();
                     saveData();
                     editor.putBoolean(DataUtils.isSetChla, true);
                     editor.putBoolean(DataUtils.isDirect,true);
                     editor.commit();
-                    deleteEstimateData();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -179,9 +179,11 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private void deleteEstimateData() {
+    private void deletePreviousData() {
         editor.remove(DataUtils.EstimateSecchi);
         editor.remove(DataUtils.EstimateOxygen);
+        editor.remove(DataUtils.DirectTotal);
+        editor.remove(DataUtils.DirectCyano);
         editor.apply();
     }
 

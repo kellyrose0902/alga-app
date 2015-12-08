@@ -16,24 +16,42 @@ package edu.uwp.alga;
  * limitations under the License.
  */
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.spash);
+        //set status bar color
+        if (Build.VERSION.SDK_INT >= 21) {
+            // Call some material design APIs here
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.WBackground));
+        } 
+
+
+
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.spash);
         ImageView image = (ImageView)findViewById(R.id.image_splash);
 
         if(bitmap.getHeight()>=2048||bitmap.getWidth()>=2048){
@@ -41,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
             int height = metrics.heightPixels;
-            bitmap =Bitmap.createScaledBitmap(bitmap, width, height, true);
+            bitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
 
         }
         image.setImageBitmap(bitmap);
