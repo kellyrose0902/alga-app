@@ -1,5 +1,6 @@
 package edu.uwp.alga.utils;
 
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,4 +27,6 @@ public class HelpUtils {
         toast.setView(layout);
         toast.show();
     }
+
+
 }

@@ -11,6 +11,12 @@ import java.util.Date;
 /**
  * Created by Kelly on 11/17/2015.
  */
+
+/*
+ * Handling functions related to data files
+ * The data logic of the whole app implement Shared Preference, Shared Preference is used to store to current value set
+ * add saved log
+ */
 public class DataUtils {
 
     public static String mPreference = "input_data";
@@ -35,11 +41,12 @@ public class DataUtils {
     public static String current = "currentkey";
 
 
+    // Check whether the input field contains data
     public static boolean hasValue(EditText editText){
         String value = editText.getText().toString();
         return (value.length()!=0);
     }
-
+    // Return the current date and time of the system
     public static String getCurrentTimeStamp(){
         try {
 
@@ -54,6 +61,7 @@ public class DataUtils {
         }
     }
 
+    // Convert date and time string to a Date object
     public static Date convertToDate(String currentTimeStamp){
 
         SimpleDateFormat df = new SimpleDateFormat("MM - dd - yyyy hh:mm a");
@@ -65,33 +73,14 @@ public class DataUtils {
         }
         return time;
     }
-//simple test to check if the data is available
-
+//simple test to check if the SharedPreferences key value is available
     public static boolean hasData(SharedPreferences preferences){
         return preferences.contains(PO) && preferences.contains(TempSurface) && preferences.contains(TempBottom)
                 && preferences.contains(lux) && preferences.contains(LakeDepth);
     }
 
-    /*public static void saveLog(SharedPreferences InputData, SharedPreferences LogData){
-        LogData.edit().clear().commit();
-        if (InputData.contains(PO)) LogData.edit().putFloat(PO,LogData.getFloat(PO,-1f));
-        if (InputData.contains(TempSurface)) LogData.edit().putFloat(TempSurface,InputData.getFloat(TempSurface,-1f));
-        if (InputData.contains(TempBottom)) LogData.edit().putFloat(TempBottom,InputData.getFloat(TempBottom,-1f));
-        if (InputData.contains(LakeDepth)) LogData.edit().putFloat(LakeDepth,InputData.getFloat(LakeDepth,-1f));
-        if (InputData.contains(DirectTotal)) LogData.edit().putFloat(DirectTotal,InputData.getFloat(DirectTotal,-1f));
-        if (InputData.contains(DirectCyano)) LogData.edit().putFloat(DirectCyano,InputData.getFloat(DirectCyano,-1f));
-        if (InputData.contains(EstimateOxygen)) LogData.edit().putFloat(EstimateOxygen,InputData.getFloat(EstimateOxygen,-1f));
-        if (InputData.contains(EstimateSecchi)) LogData.edit().putFloat(EstimateSecchi,InputData.getFloat(EstimateSecchi,-1f));
-        if (InputData.contains(lux)) LogData.edit().putFloat(lux,InputData.getFloat(lux,-1f));
-        if (InputData.contains(isDirect)) LogData.edit().putBoolean(lux,InputData.getBoolean(isDirect,true));
-        String time = getCurrentTimeStamp();
-        LogData.edit().putString(TimeStamp,time);
 
-        Log.e("DataLog","get time "+ time);
-        LogData.edit().commit();
-
-    }*/
-
+    // Save the value from one SharedPreferenced to another
     public static void saveLog(Context context,String inputLog, String saveLog){
 
         SharedPreferences InputData = context.getSharedPreferences(inputLog, Context.MODE_PRIVATE);

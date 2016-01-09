@@ -51,6 +51,11 @@ import edu.uwp.alga.utils.HelpUtils;
  * Use the {@link CalculatorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+/*
+* This class handling taking user input from the inteface
+*
+*/
 public class CalculatorFragment extends Fragment implements View.OnClickListener, SensorEventListener{
     /**
      * The fragment argument representing the section number for this
@@ -133,7 +138,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         initializeValue();
         return rootView;
     }
-
+    // Inititialize all of the views
     private void initializeViewId(Context context) {
         setChlbutton = (Button)rootView.findViewById(R.id.buttonChla);
         setChlbutton.setOnClickListener(this);
@@ -178,7 +183,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         helpChla = (ImageButton)rootView.findViewById(R.id.help_chla);
         helpChla.setOnClickListener(this);
     }
-
+    // Inititialize value for the Edittext views, so that user go to another view like "Set PO4 values" all of the previous data will be saved
     private void initializeValue(){
 
             if(DataInputLog.contains(DataUtils.TempSurface)){
@@ -199,6 +204,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         }
         }
 
+    // Get light intensity from the device light sensor
     public void getLux() {
         sensorManager
                 = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -214,7 +220,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
 
     }
-
+    // Handling actions for all of the button clicks
     @Override
     public void onClick(View v) {
         switch (v.getId()){

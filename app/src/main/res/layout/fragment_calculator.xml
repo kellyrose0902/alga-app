@@ -241,7 +241,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Lux"
+                android:text="Brightness"
                 android:textColor="@color/WText"
                 android:textSize="@dimen/text_medium"
                  />
@@ -254,7 +254,7 @@
                 android:background="@color/WText"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="m"
+                android:hint="lux"
                 android:inputType="numberDecimal"
                 android:padding="7dp"
                 android:textCursorDrawable="@drawable/edit_cursor" />

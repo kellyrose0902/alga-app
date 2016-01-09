@@ -9,12 +9,20 @@ android {
         applicationId "edu.uwp.alga"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "2.0"
+    }
+    signingConfigs {
+        release {
+            storeFile file("myreleasekey.keystore")
+            storePassword "parkside"
+            keyAlias "appfactory"
+            keyPassword "parkside"
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,8 +36,7 @@ dependencies {
     compile 'com.android.support:gridlayout-v7:23.1.0+'
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'com.google.android.gms:play-services:6.+'
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
 
 }
 

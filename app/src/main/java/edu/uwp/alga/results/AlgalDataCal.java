@@ -52,6 +52,13 @@ public class AlgalDataCal {
         this.depth = depth;
         this.lux = lux;
     }
+    public int getTotalCurTime(){
+        return 0;
+    }
+
+    public int getCyanoCurTime(){
+        return 0;
+    }
 
     // static methods to return estimate Chla
     private static float estimateTotalChla(float SD_value,float DO_value){

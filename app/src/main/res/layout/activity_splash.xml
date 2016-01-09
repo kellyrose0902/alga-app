@@ -22,9 +22,10 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:context=".Splash"
-    android:background="@color/WBackground">
+    >
     <ImageView
         android:id="@+id/image_splash"
+        android:src="@drawable/splash_full"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"/>

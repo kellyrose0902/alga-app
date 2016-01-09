@@ -49,7 +49,7 @@ public class SubmitActivity extends AppCompatActivity {
 
 
     }
-
+    // If network is available, send data to server
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
