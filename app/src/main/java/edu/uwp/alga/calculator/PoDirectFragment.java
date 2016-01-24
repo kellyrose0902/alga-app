@@ -105,7 +105,7 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
             return false;
         }else {
             Float value;
-            value = Float.valueOf(po4DirectTotal.getText().toString());
+            value = Float.valueOf(po4DirectTotal.getText().toString().replace(',', '.'));
             if (value<0.0001 || value>7){
                 HelpUtils.makeToast(getActivity(), "Please input PO4 concentation between 0.0001 and 7");
 
@@ -126,7 +126,7 @@ public class PoDirectFragment extends Fragment implements View.OnClickListener {
         //editor.clear();
         //editor.commit();
         if (DataUtils.hasValue(po4DirectTotal)){
-            editor.putFloat(DataUtils.PO,Float.valueOf(po4DirectTotal.getText().toString()));
+            editor.putFloat(DataUtils.PO,Float.valueOf(po4DirectTotal.getText().toString().replace(',','.')));
         }
 
         editor.apply();

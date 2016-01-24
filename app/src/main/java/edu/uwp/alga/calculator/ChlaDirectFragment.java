@@ -124,14 +124,14 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
             return false;
         }
         if(DataUtils.hasValue(Totaltext)){
-            Float value = Float.valueOf(Totaltext.getText().toString());
+            Float value = Float.valueOf(Totaltext.getText().toString().replace(',','.'));
             if (value < 0 || value > 300){
                 HelpUtils.makeToast(getActivity(), "Please input Total Chl a value between 0 and 300");
                 return false;
             }
         }
         if(DataUtils.hasValue(Cyanotext)) {
-            Float value = Float.valueOf(Cyanotext.getText().toString());
+            Float value = Float.valueOf(Cyanotext.getText().toString().replace(',', '.'));
             if (value < 0 || value > 300) {
                 HelpUtils.makeToast(getActivity(), "Please input Cyano Chl a value between 0 and 300");
                 return false;
@@ -146,11 +146,11 @@ public class ChlaDirectFragment extends Fragment implements View.OnClickListener
         //editor.clear();
         //editor.commit();
         if (DataUtils.hasValue(Totaltext)){
-            editor.putFloat(DataUtils.DirectTotal,Float.valueOf(Totaltext.getText().toString()));
+            editor.putFloat(DataUtils.DirectTotal,Float.valueOf(Totaltext.getText().toString().replace(',', '.')));
         }
         else editor.remove(DataUtils.DirectTotal);
         if (DataUtils.hasValue(Cyanotext)){
-            editor.putFloat(DataUtils.DirectCyano,Float.valueOf(Cyanotext.getText().toString()));
+            editor.putFloat(DataUtils.DirectCyano,Float.valueOf(Cyanotext.getText().toString().replace(',','.')));
         }
         else editor.remove(DataUtils.DirectCyano);
         editor.apply();

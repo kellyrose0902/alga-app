@@ -54,7 +54,7 @@
                 android:layout_below="@+id/po_line0"
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text="ATP is an example of a molecule that uses phosphorus. ATP is essential to all living organisms since it is used for energy. However, too much phosphorus in a system could cause an algea bloom. So to predict algea bloom we need to measure the phosphate concentration at the bottom."
+                android:text="ATP is an example of a molecule that uses phosphorus. ATP is essential to all living organisms since it is used for energy. However, too much phosphorus in a system could cause an algae bloom. So to predict algae bloom we need to measure the phosphate concentration at the bottom."
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 
@@ -93,7 +93,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="7dp"
                 android:lineSpacingExtra="4dp"
-                android:text="2. Estimate phosphate concentration based on the condition of the examinizing lake "
+                android:text="2. Estimate phosphate concentration based on the condition of the examining lake "
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
         </RelativeLayout>

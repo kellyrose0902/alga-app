@@ -13,7 +13,7 @@ public class AlgalDataCal {
 
 
     // All of the require constant
-    public static final float R0_MIN = 0.0001f;
+    public static final float R0_MIN = 0.001f;
     public static final float R0_MAX = 0.065f;
     public static final int N0_MIN = 5;
     public static final float GROWTH_RATE_SCALE = 1.635f;
@@ -72,6 +72,7 @@ public class AlgalDataCal {
         float pav = Pbot/depth;
         float K1 = 1875 * pav - 7.5f;
         if (K1<0) K1 = 0;
+        if (K1>250) K1=250;
         return K1;
     }
 
@@ -79,6 +80,7 @@ public class AlgalDataCal {
         float pav = Pbot/depth;
         float K2 = 1625 * pav - 12.5f;
         if (K2<0) K2 = 0;
+        if (K2>200) K2 = 200;
         return K2;
     }
 
@@ -94,7 +96,7 @@ public class AlgalDataCal {
             if (tempdiff > 1 & pav > 0.1f) R01 = R0_MAX*(-tempdiff/3+4/3);
             if (tempdiff <= 1 & pav > 0.1f) R01 = R0_MAX;
         }
-        R01 = R01* (float)exp(pow(-(0.17f)*(surtemp-27),2));
+        R01 = R01* (float)exp(-pow((0.17f)*(surtemp-27),2));
         if(lux<12000) R01 = R01 * lux/12000;
         return R01;
     }
@@ -110,7 +112,7 @@ public class AlgalDataCal {
             if (tempdiff > 1 & pav > 0.1f) R02 = R0_MAX*(-tempdiff/3+4/3);
             if (tempdiff <= 1 & pav > 0.1f) R02 = R0_MAX;
         }
-        R02 = R02* (float)exp(pow(-(0.17)*(surtemp-27),2));
+        R02 = R02* (float)exp(-pow((0.17)*(surtemp-27),2));
         if(lux<12000) R02 = R02 * lux/12000;
         return R02;
     }
@@ -129,7 +131,7 @@ public class AlgalDataCal {
             K = getK2();
             N_CUR_CHL = cyano_chla;
         }
-        t_cur_Chl =-(1/(R0*GROWTH_RATE_SCALE))*(float)Math.log10((N0*K/N_CUR_CHL-N0)/(K-N0))+TIMESHIFT;
+        t_cur_Chl =-(1/(R0*GROWTH_RATE_SCALE)) * (float) Math.log((N0 * K /N_CUR_CHL-N0)/(K-N0))+TIMESHIFT;
         return t_cur_Chl;
     }
     public ArrayList<Float> getTotalChlaDataSet(){

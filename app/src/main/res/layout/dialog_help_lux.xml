@@ -80,7 +80,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:lineSpacingExtra="4dp"
-                android:text="@string/lux_text_note"
+                android:text=" This app will automatically measure the lux value using the phone sensor.However, you can also enter a number if you want to calculate with a different number."
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
         </RelativeLayout>

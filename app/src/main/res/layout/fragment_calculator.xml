@@ -48,16 +48,34 @@
             android:layout_marginTop="15dp"
             android:layout_weight="2"
             android:orientation="horizontal">
-
-            <edu.uwp.alga.utils.LabelTextView
-                android:id="@+id/po4_concentration"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="3"
-                android:text="@string/calc_po4"
-                android:textColor="@color/WText"
-                android:textSize="@dimen/text_medium" />
+                android:layout_weight="3">
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="PO"
+                    android:textColor="@color/WText"
+                    android:textSize="@dimen/text_medium" />
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="4"
+                    android:textColor="@color/WText"
+                    android:textSize="15sp" />
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text=" Concentration"
+                    android:textColor="@color/WText"
+                    android:textSize="@dimen/text_medium" />
+            </LinearLayout>
+
 
             <!--<Button-->
             <!--android:layout_width="0dp"-->

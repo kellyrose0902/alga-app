@@ -42,7 +42,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:lineSpacingExtra="4dp"
-                android:text="For collection of bottom phosphate values you will need a deep water sampler"
+                android:text="Collection of bottom phosphate can be done using affordable PO4 test strips on the spot, but the test water has to come from the bottom"
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 

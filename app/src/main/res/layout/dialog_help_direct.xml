@@ -75,7 +75,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="10dp"
 
-                        android:text="Algea Torch"
+                        android:text="Algae Torch"
                         android:textColor="@color/WText"
                         android:textSize="20sp" />
 
@@ -163,7 +163,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text="3.	The torch can measure both Total Chlorophyll a (for all types of algea) and Cyano Chlorophyll a (for blue-green algae) "
+                android:text="3.	The torch can measure both Total Chlorophyll a (for all types of algae) and Cyano Chlorophyll a (for blue-green algae) "
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 

@@ -27,6 +27,10 @@ public class HelpUtils {
         toast.setView(layout);
         toast.show();
     }
+    public static String replaceComma(String s){
+        s.replace(",",".");
+        return s;
+    }
 
 
 }

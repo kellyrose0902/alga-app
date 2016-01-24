@@ -154,7 +154,7 @@ public class PoEstimateFragment extends Fragment implements View.OnClickListener
 
 
     public void saveData() {
-        editor.putFloat(DataUtils.PO,Float.valueOf(po4Val.getText().toString()));
+        editor.putFloat(DataUtils.PO,Float.valueOf(po4Val.getText().toString().replace(',','.')));
         editor.apply();
     }
 

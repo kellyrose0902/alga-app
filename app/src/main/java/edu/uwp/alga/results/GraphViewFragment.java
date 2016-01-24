@@ -140,7 +140,7 @@ public class GraphViewFragment extends Fragment {
         else yAxis.setAxisMaxValue(maxYAxisValue+20f);
 
         YAxis yAxis1 = chart.getAxisRight();
-        LimitLine ll = new LimitLine(40f, "WHO Risk Limit for HAB: 40 µg");
+        LimitLine ll = new LimitLine(40f, "WHO Risk Limit for HAB: 40 µg/L");
         ll.setLineWidth(5f);
         ll.setTextSize(10f);
         ll.setTextColor(ContextCompat.getColor(context, R.color.WgraphLimit));

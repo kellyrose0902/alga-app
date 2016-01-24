@@ -44,14 +44,27 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="3">
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
+                    android:text="PO"
+                    android:textColor="@color/WText"
+                    android:textSize="@dimen/text_medium" />
+                <edu.uwp.alga.utils.LabelTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="4"
+                    android:textColor="@color/WText"
+                    android:textSize="15sp" />
                 <edu.uwp.alga.utils.LabelTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="PO4 Concentration"
+                    android:text=" Concentration"
                     android:textColor="@color/WText"
                     android:textSize="@dimen/text_medium" />
             </LinearLayout>

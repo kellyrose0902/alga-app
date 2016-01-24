@@ -9,7 +9,7 @@ android {
         applicationId "edu.uwp.alga"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 5
+        versionCode 6
         versionName "2.0"
     }
     signingConfigs {

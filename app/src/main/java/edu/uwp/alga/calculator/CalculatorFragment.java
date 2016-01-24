@@ -79,6 +79,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     ImageButton helpDepth;
     ImageButton helpChla;
     Float lux;
+    boolean isSetLux = true;
     ImageView background;
     SensorManager sensorManager;
     Sensor lightSensor;
@@ -126,9 +127,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
 
 
-
-        getLux();
-
         DataInputLog = context.getSharedPreferences(DataUtils.mPreference,
                 Context.MODE_PRIVATE);
 
@@ -136,6 +134,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
         initializeViewId(context);
         initializeValue();
+        getLux();
         return rootView;
     }
     // Inititialize all of the views
@@ -295,13 +294,13 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
             Float value;
 
-            value = Float.valueOf(TempSurtext.getText().toString());
+            value = Float.valueOf(HelpUtils.replaceComma(TempSurtext.getText().toString()));
             Float surtempVal = value;
             if (value<0 || value>40){
                 HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
                 return false;
             }
-            value = Float.valueOf(TempBottext.getText().toString());
+            value = Float.valueOf(HelpUtils.replaceComma(TempBottext.getText().toString()));
             Float bottempVal = value;
             if (value<0 || value>40){
                 HelpUtils.makeToast(getActivity(), "Please input Surface between 0 and 40");
@@ -313,7 +312,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
                 return false;
             }
 
-            value = Float.valueOf(Depthtext.getText().toString());
+            value = Float.valueOf(Depthtext.getText().toString().replace(',','.'));
             if (value<=0 || value>5){
                 HelpUtils.makeToast(getActivity(), "Algal bloom will not happen if lake depth > 5");
                 return false;
@@ -335,16 +334,16 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     public void saveData(){
 
         if(DataUtils.hasValue(TempSurtext))
-        editor.putFloat(DataUtils.TempSurface,Float.valueOf(TempSurtext.getText().toString()));
+        editor.putFloat(DataUtils.TempSurface,Float.valueOf(TempSurtext.getText().toString().replace(',','.')));
 
         if(DataUtils.hasValue(TempBottext))
-        editor.putFloat(DataUtils.TempBottom,Float.valueOf(TempBottext.getText().toString()));
+        editor.putFloat(DataUtils.TempBottom,Float.valueOf(TempBottext.getText().toString().replace(',', '.')));
 
         if(DataUtils.hasValue(Depthtext))
-        editor.putFloat(DataUtils.LakeDepth,Float.valueOf(Depthtext.getText().toString()));
+        editor.putFloat(DataUtils.LakeDepth,Float.valueOf(Depthtext.getText().toString().replace(',', '.')));
 
         if(DataUtils.hasValue(LuxText)){
-            editor.putFloat(DataUtils.lux,Float.valueOf(LuxText.getText().toString()));
+            editor.putFloat(DataUtils.lux,Float.valueOf(LuxText.getText().toString().replace(',','.')));
         }
 
         editor.apply();
@@ -354,6 +353,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             lux = event.values[0];
+
+            LuxText.setHint(String.valueOf(lux)+" lux");
+
+
+
         }
     }
     @Override

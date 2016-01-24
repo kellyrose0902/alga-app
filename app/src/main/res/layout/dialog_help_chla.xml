@@ -43,7 +43,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
                 android:lineSpacingExtra="4dp"
-                android:text="Chlorophyll is the green pigment in plants that allows them to create energy from light to photosynthesize. "
+                android:text="Chlorophyll is the green pigment in plants that allows them to create energy from light by photosynthesis. "
                 android:textColor="@color/WText"
                 android:textSize="20sp" />
 

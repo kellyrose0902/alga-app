@@ -125,7 +125,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
             return false;
         }
         else {
-            Float value = Float.valueOf(Sechitext.getText().toString());
+            Float value = Float.valueOf(Sechitext.getText().toString().replace(',', '.'));
             if (value <= 0 || value > 1) {
                 HelpUtils.makeToast(getActivity(), "Please input Secchi Depth value between 0 and 1");
                 return false;
@@ -133,7 +133,7 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
         }
 
         if(DataUtils.hasValue(Oxygentext)) {
-            Float value = Float.valueOf(Oxygentext.getText().toString());
+            Float value = Float.valueOf(Oxygentext.getText().toString().replace(',','.'));
             if (value < 1 || value > 100) {
                 HelpUtils.makeToast(getActivity(), "Please input Oxygen Dissolved value between 1 and 100");
                 return false;
@@ -146,11 +146,11 @@ public class ChlaEstimateFragment extends Fragment implements View.OnClickListen
     //Save all the input data to the shared preference
     public void saveData(){
         if (DataUtils.hasValue(Sechitext)){
-            editor.putFloat(DataUtils.EstimateSecchi, Float.valueOf(Sechitext.getText().toString()));
+            editor.putFloat(DataUtils.EstimateSecchi, Float.valueOf(Sechitext.getText().toString().replace(',', '.')));
         }
         else editor.remove(DataUtils.EstimateSecchi);
         if (DataUtils.hasValue(Oxygentext)){
-            editor.putFloat(DataUtils.EstimateOxygen,Float.valueOf(Oxygentext.getText().toString()));
+            editor.putFloat(DataUtils.EstimateOxygen,Float.valueOf(Oxygentext.getText().toString().replace(',','.')));
         }
         else editor.remove(DataUtils.EstimateOxygen);
         editor.apply();

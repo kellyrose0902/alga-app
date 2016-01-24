@@ -44,7 +44,7 @@
     <string name="PO_land_text">Type of land within 1 km of the lake:</string>
     <string name="PO_vegetation_text">Type of vegetation near the shore:</string>
     <string name="PO_plant_text">Quantity of plants in the lake:</string>
-    <string name="PO_frequency_text">Frequency of algea bloom occurence:</string>
+    <string name="PO_frequency_text">Frequency of algae bloom occurence:</string>
 
     <!--Help text-->
     <string name="lux_text1">Lux is the unit of luminance and luminous emittance, measuring luminous flux per unit area</string>

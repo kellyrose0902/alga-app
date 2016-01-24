@@ -79,7 +79,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:lineSpacingExtra="4dp"
-                            android:text="Dissolved Oxygen Meter "
+                            android:text="Dissolved Oxygen Meter OR Oxygen test strip "
                             android:textColor="@color/WText"
                             android:textSize="20sp" />
                     </RelativeLayout>
@@ -97,7 +97,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:src="@drawable/dialog_dometer" />
+                        android:src="@drawable/test_strip" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -117,7 +117,7 @@
                 android:layout_alignBottom="@+id/do_indent1b"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="25dp"
-                android:text="How to use :"
+                android:text="How to use the meter:"
                 android:textColor="@color/WText"
                 android:textSize="23sp" />
 
